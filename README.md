@@ -1,5 +1,3 @@
-![Sample](screenshots/alert.gif)
-
 Fancy alerts for NativeScript.
 iOS only at the moment, Android coming soon.
 
@@ -8,6 +6,8 @@ iOS only at the moment, Android coming soon.
 ```
 npm install nativescript-fancyalert --save
 ```
+
+![Sample](screenshots/alert.gif)
 
 # Usage
 
