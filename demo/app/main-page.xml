@@ -1,0 +1,29 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded">
+  <Page.actionBar>
+      <ActionBar title="NativeScript Fancy Alert" icon="">
+      </ActionBar>
+  </Page.actionBar>
+  <ScrollView>
+    <StackLayout>
+      <Button text="Alert Success" tap="{{showSuccess}}" />
+      <Button text="Alert Success w/ Sound" tap="{{showSuccessCustomEffects}}" />
+      <Button text="Alert Error" tap="{{showError}}" />
+      <Button text="Alert Notice" tap="{{showNotice}}" />
+      <Button text="Alert Warning" tap="{{showWarning}}" />
+      <Button text="Alert Info" tap="{{showInfo}}" />
+      <Button text="Alert Edit" tap="{{showEdit}}" />
+      <Button text="Alert Waiting" tap="{{showWaiting}}" />
+      <Button text="Alert Question" tap="{{showQuestion}}" />
+      <Button text="Alert Custom Image" tap="{{showCustomImage}}" />
+      <Button text="Alert Button with Timer" tap="{{showCustomButtonTimer}}" />
+      <Button text="Alert Custom Buttons" tap="{{showCustomButtons}}" />
+      <Button text="Alert Success w/ Auto-Close Delay" tap="{{showSuccessDelay}}" />
+      <Button text="Alert Success Custom Width" tap="{{showCustomWidth}}" />
+      <Button text="Alert Text Color" tap="{{customText}}" />
+      <Button text="Alert Text Field" tap="{{showTextField}}" />
+      <Button text="Alert w/ Switch" tap="{{showSwitch}}" />
+      <Button text="Alert Custom View" tap="{{showCustomView}}" />
+      
+    </StackLayout>   
+  </ScrollView>
+</Page>
