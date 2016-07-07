@@ -1,11 +1,12 @@
 {
 	"name": "nativescript-fancyalert",
-	"version": "1.0.0",
+	"version": "1.0.8",
 	"description": "Fancy alerts for NativeScript.",
 	"main": "fancyalert.js",
+	"typings": "fancyalert.d.ts",
 	"nativescript": {
 		"platforms": {
-      "ios": "2.0.1"
+      "ios": "2.1.1"
 		}
 	},
 	"scripts": {
@@ -13,7 +14,7 @@
     "demo.ios": "npm run preparedemo && cd demo && tns emulate ios",
 		"demo.android": "npm run preparedemo && cd demo && tns run android",
 		"preparedemo": "npm run build && cd demo && tns plugin remove nativescript-fancyalert && tns plugin add .. && tns install",
-		"setup": "cd demo && npm install && cd .. && npm run build && cd demo && tns plugin add .. && cd .."
+		"setup": "npm i && cd demo && npm install && cd .. && npm run build && cd demo && tns plugin add .. && cd .."
 	},
 	"repository": {
 		"type": "git",
@@ -39,6 +40,8 @@
 	"homepage": "https://github.com/NathanWalker/nativescript-fancyalert",
 	"readmeFilename": "README.md",
 	"devDependencies": {
+		"tns-core-modules": "^2.1.0",
+    "tns-platform-declarations": "^2.0.0",
 		"typescript": "^1.8.10"
 	}
 }

@@ -102,7 +102,7 @@ export class HelloWorldModel extends Observable {
   }
 
   public showTextField() {
-    TNSFancyAlert.showTextField('Enter your name', new TNSFancyAlertButton({ label: 'Save', action: (value: any) => { console.log(`User entered ${value}`);}}), undefined, undefined, 'User Input?', `Yeah, sure we can.`, 'Ok, lots of options.');
+    TNSFancyAlert.showTextField('Enter your name', '', new TNSFancyAlertButton({ label: 'Save', action: (value: any) => { console.log(`User entered ${value}`);}}), undefined, undefined, 'User Input?', `Yeah, sure we can.`, 'Ok, lots of options.');
   }
 
   public showSwitch() {

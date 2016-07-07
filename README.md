@@ -66,6 +66,8 @@ Property |  Description
 `TNSFancyAlert.backgroundType: BACKGROUND_TYPESI` | Use `TNSFancyAlert.BACKGROUND_TYPES` to set. Supports: Shadow, Blur, Transparent.
 `TNSFancyAlert.customViewColor: string` | Overwrite (Buttons, top circle and borders) colors.
 `TNSFancyAlert.iconTintColor: string` | Set custom tint color for icon image.
+`TNSFancyAlert.titleColor: string` | Set custom title color.
+`TNSFancyAlert.bodyTextColor: string` | Set custom body text color.
 `TNSFancyAlert.tintTopCircle: string` | Override top circle tint color with background color
 `TNSFancyAlert.cornerRadius: number` | Set custom corner radius.
 `TNSFancyAlert.backgroundViewColor: string` | Overwrite background color
@@ -86,7 +88,7 @@ Property |  Description
 * `showCustomImage(imageName: string, color: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
 * `showCustomButtons(buttons: Array<TNSFancyAlertButton>, imageName: string, color: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
 * `showCustomTextAttributes(attributionBlock: Function, button: TNSFancyAlertButton, imageName: string, color: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
-* `showTextField(placeholder: string, button: TNSFancyAlertButton, imageName: string, color: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
+* `showTextField(placeholder: string, initialValue: string, button: TNSFancyAlertButton, imageName: string, color: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
 * `showSwitch(switchLabel: string, switchColor: string, button: TNSFancyAlertButton, imageName: string, color: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
 * `showCustomView(customView: any, imageName?: string, color?: string, title?: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
 * `show(type: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`

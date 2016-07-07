@@ -99,6 +99,12 @@ export class TNSFancyAlert {
   //Set custom tint color for icon image.
   public static iconTintColor: string;
 
+  // set custom title color
+  public static titleColor: string;
+
+  // set custom body text color
+  public static bodyTextColor: string;
+
   //Override top circle tint color with background color
   public static tintTopCircle: boolean = true;
 
@@ -161,35 +167,37 @@ export class TNSFancyAlert {
     alert.showCustomColorTitleSubTitleCloseButtonTitleDuration(image, new Color(color).ios, title, subTitle, (closeBtnTitle || 'Ok'), (duration || 0));
   }
 
-  public static showCustomButtons(buttons: Array<TNSFancyAlertButton>, imageName: string, color: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number) {
+  public static showCustomButtons(buttons: Array<TNSFancyAlertButton>, image: any, color: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number) {
     let alert = TNSFancyAlert.createAlert(width);
     for (let btn of buttons) {
       alert.addButtonActionBlock(btn.label, () => {
         btn.action();
       });
     }
-    TNSFancyAlert.showCustom(alert, imageName, color, title, subTitle, null, duration);
+    TNSFancyAlert.showCustom(alert, image, color, title, subTitle, null, duration);
   }
 
-  public static showCustomTextAttributes(attributionBlock: Function, button: TNSFancyAlertButton, imageName: string, color: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number) {
+  public static showCustomTextAttributes(attributionBlock: Function, button: TNSFancyAlertButton, image: any, color: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number) {
     let alert = TNSFancyAlert.createAlert(width);
     alert.attributedFormatBlock = attributionBlock;
     alert.addButtonActionBlock(button.label, () => {
       button.action();
     });
-    TNSFancyAlert.showCustom(alert, imageName, color, title, subTitle, null, duration);
+    TNSFancyAlert.showCustom(alert, image, color, title, subTitle, null, duration);
   }
 
-  public static showTextField(placeholder: string, button: TNSFancyAlertButton, imageName: string, color: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number) {
+  public static showTextField(placeholder: string, initialValue: string, button: TNSFancyAlertButton, image: any, color: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number) {
     let alert = TNSFancyAlert.createAlert(width);
     var textField = alert.addTextField(placeholder);
+    if (initialValue)
+      textField.text = initialValue;
     alert.addButtonActionBlock(button.label, () => {
       button.action(textField.text);
     });
-    TNSFancyAlert.showCustom(alert, imageName, color, title, subTitle, null, duration);
+    TNSFancyAlert.showCustom(alert, image, color, title, subTitle, null, duration);
   }
 
-  public static showSwitch(switchLabel: string, switchColor: string, button: TNSFancyAlertButton, imageName: string, color: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number) {
+  public static showSwitch(switchLabel: string, switchColor: string, button: TNSFancyAlertButton, image: any, color: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number) {
     let alert = TNSFancyAlert.createAlert(width);
     var switchView = alert.addSwitchViewWithLabel(switchLabel);
     switchView.tintColor = new Color(switchColor).ios;
@@ -197,13 +205,13 @@ export class TNSFancyAlert {
     alert.addButtonActionBlock(button.label, () => {
       button.action(switchView.selected);
     });
-    TNSFancyAlert.showCustom(alert, imageName, color, title, subTitle, null, duration);
+    TNSFancyAlert.showCustom(alert, image, color, title, subTitle, null, duration);
   }
 
-  public static showCustomView(customView: any, imageName?: string, color?: string, title?: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number) {
+  public static showCustomView(customView: any, image?: any, color?: string, title?: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number) {
     let alert = TNSFancyAlert.createAlert(width);
     alert.addCustomView(customView);
-    TNSFancyAlert.showCustom(alert, imageName, color, title, subTitle, closeBtnTitle, duration);
+    TNSFancyAlert.showCustom(alert, image, color, title, subTitle, closeBtnTitle, duration);
   }
 
   /**
@@ -212,6 +220,37 @@ export class TNSFancyAlert {
   public static show(type: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number) {
     let alert = TNSFancyAlert.createAlert(width);
 
+    // apply options to instance   
+    TNSFancyAlert.applyOptions(alert);
+    
+    if (typeof closeBtnTitle === 'undefined')
+      closeBtnTitle = 'Ok';
+    alert[`show${type}SubTitleCloseButtonTitleDuration`](title, subTitle, closeBtnTitle, (duration || 0));
+  }
+
+  public static showCustom(alert: any, image: any, color: string, title?: string, subTitle?: string, closeBtnTitle?: string, duration?: number) {
+    
+    // apply options to instance
+    TNSFancyAlert.applyOptions(alert);
+
+    if (typeof image === 'undefined')
+      image = 'nativescript.png';
+    if (typeof color === 'undefined')
+      color = '#2B33FF';
+    if (typeof closeBtnTitle === 'undefined')
+      closeBtnTitle = 'Ok';
+    
+    if (typeof image === 'string') {
+      image = UIImage.imageNamed(image);
+    } 
+      
+    alert.showCustomColorTitleSubTitleCloseButtonTitleDuration(image, new Color(color).ios, title, subTitle, closeBtnTitle, (duration || 0));
+  }
+
+  /**
+   * Alert Options
+   */
+  public static applyOptions(alert: any) {
     alert.shouldDismissOnTapOutside = TNSFancyAlert.shouldDismissOnTapOutside;
 
     if (TNSFancyAlert.hideAnimationType)
@@ -228,6 +267,12 @@ export class TNSFancyAlert {
 
     if (TNSFancyAlert.iconTintColor)
       alert.iconTintColor = new Color(TNSFancyAlert.iconTintColor).ios;
+    
+    if (TNSFancyAlert.titleColor)
+      alert.labelTitle.textColor = new Color(TNSFancyAlert.titleColor).ios;
+    
+    if (TNSFancyAlert.bodyTextColor)
+      alert.viewText.textColor = new Color(TNSFancyAlert.bodyTextColor).ios;
 
     alert.tintTopCircle = TNSFancyAlert.tintTopCircle;
 
@@ -241,20 +286,6 @@ export class TNSFancyAlert {
 
     if (TNSFancyAlert.soundURL)
       alert.soundURL = NSURL.fileURLWithPath(`${NSBundle.mainBundle().resourcePath}/${TNSFancyAlert.soundURL}`);
-    
-    if (typeof closeBtnTitle === 'undefined')
-      closeBtnTitle = 'Ok';
-    alert[`show${type}SubTitleCloseButtonTitleDuration`](title, subTitle, closeBtnTitle, (duration || 0));
-  }
-
-  public static showCustom(alert: any, imageName: string, color: string, title?: string, subTitle?: string, closeBtnTitle?: string, duration?: number) {
-    if (typeof imageName === 'undefined')
-      imageName = 'nativescript.png';
-    if (typeof color === 'undefined')
-      color = '#2B33FF';
-    if (typeof closeBtnTitle === 'undefined')
-      closeBtnTitle = 'Ok';
-    alert.showCustomColorTitleSubTitleCloseButtonTitleDuration(UIImage.imageNamed(imageName), new Color(color).ios, title, subTitle, closeBtnTitle, (duration || 0));
   }
 
   /**
