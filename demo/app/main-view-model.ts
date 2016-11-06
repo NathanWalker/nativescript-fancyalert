@@ -1,6 +1,8 @@
-import {Observable} from 'data/observable';
-import {Color} from 'color';
-import {TNSFancyAlert, TNSFancyAlertButton} from 'nativescript-fancyalert';
+import * as app from 'application';
+import { Observable } from 'data/observable';
+import { Color } from 'color';
+import { isIOS, isAndroid } from 'platform';
+import { TNSFancyAlert, TNSFancyAlertButton } from 'nativescript-fancyalert';
 
 declare var NSMutableAttributedString: any, NSForegroundColorAttributeName: any, NSCaseInsensitiveSearch: any, NSUnderlineStyleSingle: any, UIView: any, CGRectMake: any, SCLAlertViewShowAnimation: any, SCLAlertViewHideAnimation: any, SCLAlertViewBackground: any, NSString: any, NSUnderlineStyleAttributeName: any;
 
@@ -8,7 +10,7 @@ export class HelloWorldModel extends Observable {
 
   constructor() {
     super();
-    TNSFancyAlert.hideAnimationType = TNSFancyAlert.HIDE_ANIMATION_TYPES.SlideOutToBottom;
+    // TNSFancyAlert.hideAnimationType = TNSFancyAlert.HIDE_ANIMATION_TYPES.SlideOutToBottom;
   }
 
   public showSuccess() {
@@ -41,10 +43,14 @@ export class HelloWorldModel extends Observable {
   }
 
   public showInfo() {
-    TNSFancyAlert.showAnimationType = SCLAlertViewShowAnimation.SlideInFromBottom;
-    TNSFancyAlert.hideAnimationType = SCLAlertViewHideAnimation.SlideOutToRight;
-    TNSFancyAlert.showInfo('Info', `You can integrate any CocoaPod with NativeScript.`, 'Sweet!');
-    this.reset();
+    if (isIOS) {
+      TNSFancyAlert.showAnimationType = SCLAlertViewShowAnimation.SlideInFromBottom;
+      TNSFancyAlert.hideAnimationType = SCLAlertViewHideAnimation.SlideOutToRight;
+    }
+    TNSFancyAlert.showInfo('Info', `You can integrate any CocoaPod or Android library with NativeScript.`, 'Sweet!');
+    if (isIOS) {
+      this.reset();
+    }
   }
 
   public showEdit() {
@@ -98,15 +104,15 @@ export class HelloWorldModel extends Observable {
 
       return subTitle;
     };
-    TNSFancyAlert.showCustomTextAttributes(textAttribution, new TNSFancyAlertButton({ label: 'Wow, ok.', action: (value: any) => { console.log(`Clicked ok.`);}}), undefined, undefined, 'Custom text color?', `Yep, that can be done too!`, null);
+    TNSFancyAlert.showCustomTextAttributes(textAttribution, new TNSFancyAlertButton({ label: 'Wow, ok.', action: (value: any) => { console.log(`Clicked ok.`); } }), undefined, undefined, 'Custom text color?', `Yep, that can be done too!`, null);
   }
 
   public showTextField() {
-    TNSFancyAlert.showTextField('Enter your name', '', new TNSFancyAlertButton({ label: 'Save', action: (value: any) => { console.log(`User entered ${value}`);}}), undefined, undefined, 'User Input?', `Yeah, sure we can.`, 'Ok, lots of options.');
+    TNSFancyAlert.showTextField('Enter your name', '', new TNSFancyAlertButton({ label: 'Save', action: (value: any) => { console.log(`User entered ${value}`); } }), undefined, undefined, 'User Input?', `Yeah, sure we can.`, 'Ok, lots of options.');
   }
 
   public showSwitch() {
-    TNSFancyAlert.showSwitch(`Don't show again`, '#58B136', new TNSFancyAlertButton({ label: 'Save', action: (isSelected: boolean) => { console.log(`Don't show again was selected: ${isSelected}`);}}), 'switch.png', '#B3714F', 'Need a switch?', `It can be useful.`, 'Got it.');
+    TNSFancyAlert.showSwitch(`Don't show again`, '#58B136', new TNSFancyAlertButton({ label: 'Save', action: (isSelected: boolean) => { console.log(`Don't show again was selected: ${isSelected}`); } }), 'switch.png', '#B3714F', 'Need a switch?', `It can be useful.`, 'Got it.');
   }
 
   public showCustomView() {
