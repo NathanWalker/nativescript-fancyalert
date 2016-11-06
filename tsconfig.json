@@ -2,19 +2,34 @@
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
-        "removeComments": true,
-        "experimentalDecorators": true,
         "declaration": true,
-        "sourceMap": true
+        "removeComments": true,
+        "noLib": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": [
+            "dom"
+        ],
+        "sourceMap": true,
+        "pretty": true,
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "noEmitHelpers": true,
+        "noEmitOnError": false,
+        "noImplicitAny": false,
+        "noImplicitReturns": true,
+        "noImplicitUseStrict": false,
+        "noFallthroughCasesInSwitch": true,
+        "typeRoots": [
+            "./node_modules/@types",
+            "./node_modules"
+        ],
+        "types": [
+        ]
     },
-    "files": [
-        "node_modules/tns-core-modules/tns-core-modules.d.ts",
-        "node_modules/tns-platform-declarations/android17.d.ts",
-        "node_modules/tns-platform-declarations/ios.d.ts",
-        "node_modules/tns-platform-declarations/org.nativescript.widgets.d.ts",
-        "common.ts",
-        "fancyalert.ios.ts",
-        "fancyalert.android.ts"
+    "exclude": [
+        "node_modules",
+        "demo"
     ],
     "compileOnSave": false
 }

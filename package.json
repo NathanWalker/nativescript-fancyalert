@@ -1,12 +1,12 @@
 {
 	"name": "nativescript-fancyalert",
-	"version": "1.0.9",
+	"version": "1.1.0",
 	"description": "Fancy alerts for NativeScript.",
 	"main": "fancyalert.js",
-	"typings": "fancyalert.d.ts",
+	"typings": "index.d.ts",
 	"nativescript": {
 		"platforms": {
-			"ios": "2.1.1",
+			"ios": "2.3.0",
 			"android": "2.3.0"
 		}
 	},
@@ -24,6 +24,7 @@
 	"keywords": [
 		"NativeScript",
 		"iOS",
+		"Android",
 		"alert",
 		"dialogs"
 	],
@@ -45,9 +46,11 @@
 	},
 	"homepage": "https://github.com/NathanWalker/nativescript-fancyalert",
 	"readmeFilename": "README.md",
+	"dependencies": {
+		"typescript": "^2.0.7"
+	},
 	"devDependencies": {
-		"tns-core-modules": "^2.1.0",
-		"tns-platform-declarations": "^2.0.0",
-		"typescript": "^1.8.10"
+		"tns-core-modules": "^2.3.0",
+		"tns-platform-declarations": "^2.3.0"
 	}
 }

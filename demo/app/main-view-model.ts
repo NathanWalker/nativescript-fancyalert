@@ -20,12 +20,14 @@ export class HelloWorldModel extends Observable {
   }
 
   public showSuccessCustomEffects() {
-    TNSFancyAlert.showAnimationType = TNSFancyAlert.SHOW_ANIMATION_TYPES.SlideInFromLeft;
-    TNSFancyAlert.hideAnimationType = TNSFancyAlert.HIDE_ANIMATION_TYPES.SlideOutToRight;
-    TNSFancyAlert.backgroundType = TNSFancyAlert.BACKGROUND_TYPES.Blur;
-    TNSFancyAlert.soundURL = 'bell.mp3';
-    TNSFancyAlert.showSuccess('Sound?', 'You can use sound and customize many aspects like animation in/out, color, background style and much more.', 'Amazing!');
-    this.reset();
+    if (isIOS) {
+      TNSFancyAlert.showAnimationType = TNSFancyAlert.SHOW_ANIMATION_TYPES.SlideInFromLeft;
+      TNSFancyAlert.hideAnimationType = TNSFancyAlert.HIDE_ANIMATION_TYPES.SlideOutToRight;
+      TNSFancyAlert.backgroundType = TNSFancyAlert.BACKGROUND_TYPES.Blur;
+      TNSFancyAlert.soundURL = 'bell.mp3';
+      TNSFancyAlert.showSuccess('Sound?', 'You can use sound and customize many aspects like animation in/out, color, background style and much more.', 'Amazing!');
+      this.reset();
+    }
   }
 
   public showSuccessDelay() {

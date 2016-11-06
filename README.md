@@ -1,5 +1,9 @@
 Fancy alerts for NativeScript.
-iOS only at the moment, Android coming soon.
+
+Based on:
+
+- iOS [SCLAlertView](https://github.com/dogo/SCLAlertView)
+- Android [ColorDialog](https://github.com/andyxialm/ColorDialog)
 
 # Install
 
@@ -7,14 +11,19 @@ iOS only at the moment, Android coming soon.
 npm install nativescript-fancyalert --save
 ```
 
-![Sample](screenshots/alert.gif)
+![Sample iOS](screenshots/alert.gif)
+
+![Sample Android](screenshots/alert-android.gif)
 
 # Usage
 
 Just a few examples...
 
+NOTE: Android supports a subset of some of these features, see [here](https://github.com/NathanWalker/nativescript-fancyalert/blob/master/fancyalert.android.ts) for supported methods and features.
+
 ```
-import {TNSFancyAlert, TNSFancyAlertButton,
+import { TNSFancyAlert, TNSFancyAlertButton } from 'nativescript-fancyalert';
+
 // show success
 TNSFancyAlert.showSuccess('Success!', 'Fancy alerts are nice.', 'Yes they are!');
 
@@ -52,8 +61,6 @@ TNSFancyAlert.showSwitch(`Don't show again`, '#58B136', new TNSFancyAlertButton(
 ```
 
 ## TNSFancyAlert
-
-Alert based on [SCLAlertView](https://github.com/dogo/SCLAlertView).
 
 #### Properties
 
