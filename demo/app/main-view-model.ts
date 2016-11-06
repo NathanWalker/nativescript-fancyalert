@@ -10,7 +10,9 @@ export class HelloWorldModel extends Observable {
 
   constructor() {
     super();
-    // TNSFancyAlert.hideAnimationType = TNSFancyAlert.HIDE_ANIMATION_TYPES.SlideOutToBottom;
+    if (isIOS) {
+       TNSFancyAlert.hideAnimationType = TNSFancyAlert.HIDE_ANIMATION_TYPES.SlideOutToBottom;
+    }
   }
 
   public showSuccess() {
