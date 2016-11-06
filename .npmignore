@@ -1,4 +1,5 @@
 demo/
+screenshots/
 *.png
 *.log
 *.ts
