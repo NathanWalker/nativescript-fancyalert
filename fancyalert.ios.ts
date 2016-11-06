@@ -192,6 +192,7 @@ export class TNSFancyAlert {
     if (initialValue)
       textField.text = initialValue;
     alert.addButtonActionBlock(button.label, () => {
+      textField.resignFirstResponder();
       button.action(textField.text);
     });
     TNSFancyAlert.showCustom(alert, image, color, title, subTitle, null, duration);
