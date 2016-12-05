@@ -1,13 +1,13 @@
 {
 	"name": "nativescript-fancyalert",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "Fancy alerts for NativeScript.",
 	"main": "fancyalert.js",
 	"typings": "index.d.ts",
 	"nativescript": {
 		"platforms": {
-			"ios": "2.3.0",
-			"android": "2.3.0"
+			"ios": "2.4.0",
+			"android": "2.4.0"
 		}
 	},
 	"scripts": {
