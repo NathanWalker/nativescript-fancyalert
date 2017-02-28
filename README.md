@@ -111,6 +111,12 @@ https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation
 
 To avoid confusion with iOS native classes, `TNS` is used instead.
 
+## Tutorials
+
+Need extra help getting these fancy alerts working in your application?  Check out these tutorials that make use of the plugin:
+
+[Fancy Alerts in a NativeScript with Angular Application](https://www.thepolyglotdeveloper.com/2017/02/use-visually-appealing-fancy-alerts-nativescript-angular-application/)
+
 ## License
 
 MIT
