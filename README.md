@@ -21,7 +21,7 @@ Just a few examples...
 
 NOTE: Android supports a subset of some of these features, see [here](https://github.com/NathanWalker/nativescript-fancyalert/blob/master/fancyalert.android.ts) for supported methods and features.
 
-```
+```js
 import { TNSFancyAlert, TNSFancyAlertButton } from 'nativescript-fancyalert';
 
 // show success
