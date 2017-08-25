@@ -5,12 +5,12 @@
       "version": "2.3.0"
     },
     "tns-android": {
-      "version": "2.3.0"
+      "version": "3.1.1"
     }
   },
   "dependencies": {
     "nativescript-fancyalert": "file:..",
-    "tns-core-modules": "^2.3.0"
+    "tns-core-modules": "^3.1.1"
   },
   "devDependencies": {
     "babel-traverse": "6.7.6",
@@ -18,8 +18,8 @@
     "babylon": "6.7.0",
     "filewalker": "0.1.2",
     "lazy": "1.0.11",
-    "nativescript-dev-typescript": "^0.3.2",
-    "tns-platform-declarations": "^2.3.0",
-    "typescript": "^2.0.7"
+    "nativescript-dev-typescript": "^0.5.0",
+    "tns-platform-declarations": "^3.1.1",
+    "typescript": "^2.4.2"
   }
 }
