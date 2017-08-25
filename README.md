@@ -54,7 +54,8 @@ TNSFancyAlert.showCustomButtons(buttons, undefined, undefined, 'Got Buttons?', `
 TNSFancyAlert.showSuccess('Success!', 'This uses a custom width of 300.', `Oh that's nice.`, 0, 300);
 
 // show textfield
-TNSFancyAlert.showTextField('Enter your name', new TNSFancyAlertButton({ label: 'Save', action: (value: any) => { console.log(`User entered ${value}`);}}), undefined, undefined, 'User Input?', `Yeah, sure we can.`, 'Ok, lots of options.');
+let initialValue = null;
+TNSFancyAlert.showTextField('Enter your name', initialValue, new TNSFancyAlertButton({ label: 'Save', action: (value: any) => { console.log(`User entered ${value}`);}}), undefined, undefined, 'User Input?', `Yeah, sure we can.`, 'Ok, lots of options.');
 
 // show switch
 TNSFancyAlert.showSwitch(`Don't show again`, '#58B136', new TNSFancyAlertButton({ label: 'Save', action: (isSelected: boolean) => { console.log(`Don't show again was selected: ${isSelected}`);}}), 'switch.png', '#B3714F', 'Need a switch?', `It can be useful.`, 'Got it.');
