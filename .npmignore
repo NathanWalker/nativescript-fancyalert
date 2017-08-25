@@ -4,3 +4,4 @@ screenshots/
 *.log
 *.ts
 !*.d.ts
+tsconfig.json
