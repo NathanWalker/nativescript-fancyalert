@@ -15,11 +15,9 @@ npm install nativescript-fancyalert --save
 
 ![Sample Android](screenshots/alert-android.gif)
 
-# Usage
+# iOS Specifications
 
-Just a few examples...
-
-NOTE: Android supports a subset of some of these features, see [here](https://github.com/NathanWalker/nativescript-fancyalert/blob/master/fancyalert.android.ts) for supported methods and features.
+#### Usage Examples
 
 ```js
 import { TNSFancyAlert, TNSFancyAlertButton } from 'nativescript-fancyalert';
@@ -61,9 +59,7 @@ TNSFancyAlert.showTextField('Enter your name', initialValue, new TNSFancyAlertBu
 TNSFancyAlert.showSwitch(`Don't show again`, '#58B136', new TNSFancyAlertButton({ label: 'Save', action: (isSelected: boolean) => { console.log(`Don't show again was selected: ${isSelected}`);}}), 'switch.png', '#B3714F', 'Need a switch?', `It can be useful.`, 'Got it.');
 ```
 
-## TNSFancyAlert
-
-#### Properties
+#### TNSFancyAlert - Properties
 
 Property |  Description
 -------- | ---------
@@ -82,7 +78,7 @@ Property |  Description
 `TNSFancyAlert.useLargerIcon: boolean` | Make the top circle icon larger
 `TNSFancyAlert.soundURL: string` | Use mp3 from App_Resources when alert shows.
 
-#### Methods
+#### TNSFancyAlert - Methods
 
 * `showSuccess(title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
 * `showError(title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
@@ -102,6 +98,31 @@ Property |  Description
 * `show(type: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
 * `showCustom(alert: any, imageName: string, color: string, title?: string, subTitle?: string, closeBtnTitle?: string, duration?: number)`
 * `createAlert(width?: number)`
+
+# Android Specifications
+
+#### Usage Examples
+
+NOTE: Android supports only a subset of the iOS features, but will return a Promise on every call:
+
+```js
+import { TNSFancyAlert, TNSFancyAlertButton } from 'nativescript-fancyalert';
+
+// show success
+TNSFancyAlert.showSuccess('Success!', 'Fancy alerts are nice.', 'Yes they are!').then( () => { /* user pressed the button */ });
+
+// show error
+TNSFancyAlert.showError('Error!', 'Something bad happened.', 'Close').then( () => { /* user pressed the button */ });
+
+```
+#### TNSFancyAlert - Methods
+
+* `showSuccess(title: string, subTitle?: string, closeBtnTitle?: string): Promise<any>`
+* `showError(title: string, subTitle?: string, closeBtnTitle?: string): Promise<any>`
+* `showNotice(title: string, subTitle?: string, closeBtnTitle?: string): Promise<any>`
+* `showWarning(title: string, subTitle?: string, closeBtnTitle?: string): Promise<any>`
+* `showInfo(title: string, subTitle?: string, closeBtnTitle?: string): Promise<any>`
+
 
 ## Why the TNS prefixed name?
 

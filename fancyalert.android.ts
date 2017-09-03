@@ -81,105 +81,120 @@ export class TNSFancyAlert {
     title: string,
     subTitle?: string,
     closeBtnTitle?: string
-  ) {
-    let alert = new PromptDialog(app.android.currentContext);
-    alert.setDialogType(SUPPORTED_TYPESI.SUCCESS);
-    alert.setTitleText(title || "Success!");
-    alert.setContentText(subTitle || "");
-    alert.setAnimationEnable(true);
-    alert.setPositiveListener(
-      closeBtnTitle || "Okay",
-      new PromptDialog.OnPositiveListener({
-        onClick: dialog => {
-          dialog.dismiss();
-        }
-      })
-    );
-    alert.show();
+  ): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const alert = new PromptDialog(app.android.currentContext);
+      alert.setDialogType(SUPPORTED_TYPESI.SUCCESS);
+      alert.setTitleText(title || "Success!");
+      alert.setContentText(subTitle || "");
+      alert.setAnimationEnable(true);
+      alert.setPositiveListener(
+        closeBtnTitle || "Okay",
+        new PromptDialog.OnPositiveListener({
+          onClick: dialog => {
+            dialog.dismiss();
+            resolve();
+          }
+        })
+      );
+      alert.show();
+    });
   }
 
   public static showError(
     title: string,
     subTitle?: string,
     closeBtnTitle?: string
-  ) {
-    let alert = new PromptDialog(app.android.currentContext);
-    alert.setDialogType(SUPPORTED_TYPESI.WRONG);
-    alert.setTitleText(title || "Error!");
-    alert.setContentText(subTitle || "");
-    alert.setAnimationEnable(true);
-    alert.setPositiveListener(
-      closeBtnTitle || "Okay",
-      new PromptDialog.OnPositiveListener({
-        onClick: dialog => {
-          dialog.dismiss();
-        }
-      })
-    );
-    alert.show();
+  ): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const alert = new PromptDialog(app.android.currentContext);
+      alert.setDialogType(SUPPORTED_TYPESI.WRONG);
+      alert.setTitleText(title || "Error!");
+      alert.setContentText(subTitle || "");
+      alert.setAnimationEnable(true);
+      alert.setPositiveListener(
+        closeBtnTitle || "Okay",
+        new PromptDialog.OnPositiveListener({
+          onClick: dialog => {
+            dialog.dismiss();
+            resolve();
+          }
+        })
+      );
+      alert.show();
+    });
   }
 
   public static showNotice(
     title: string,
     subTitle?: string,
     closeBtnTitle?: string
-  ) {
-    let alert = new PromptDialog(app.android.currentContext);
-    alert.setDialogType(SUPPORTED_TYPESI.HELP);
-    alert.setTitleText(title || "Notice");
-    alert.setContentText(subTitle || "");
-    alert.setAnimationEnable(true);
-    alert.setPositiveListener(
-      closeBtnTitle || "Okay",
-      new PromptDialog.OnPositiveListener({
-        onClick: dialog => {
-          dialog.dismiss();
-        }
-      })
-    );
-    alert.show();
+  ): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const alert = new PromptDialog(app.android.currentContext);
+      alert.setDialogType(SUPPORTED_TYPESI.HELP);
+      alert.setTitleText(title || "Notice");
+      alert.setContentText(subTitle || "");
+      alert.setAnimationEnable(true);
+      alert.setPositiveListener(
+        closeBtnTitle || "Okay",
+        new PromptDialog.OnPositiveListener({
+          onClick: dialog => {
+            dialog.dismiss();
+            resolve();
+          }
+        })
+      );
+      alert.show();
+    });
   }
 
   public static showWarning(
     title: string,
     subTitle?: string,
     closeBtnTitle?: string
-  ) {
-    let alert = new PromptDialog(app.android.currentContext);
-    alert.setDialogType(SUPPORTED_TYPESI.WARNING);
-    alert.setTitleText(title || "Warning!");
-    alert.setContentText(subTitle || "");
-    alert.setAnimationEnable(true);
-    alert.setPositiveListener(
-      closeBtnTitle || "Okay",
-      new PromptDialog.OnPositiveListener({
-        onClick: dialog => {
-          dialog.dismiss();
-        }
-      })
-    );
-    alert.show();
+  ): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const alert = new PromptDialog(app.android.currentContext);
+      alert.setDialogType(SUPPORTED_TYPESI.WARNING);
+      alert.setTitleText(title || "Warning!");
+      alert.setContentText(subTitle || "");
+      alert.setAnimationEnable(true);
+      alert.setPositiveListener(
+        closeBtnTitle || "Okay",
+        new PromptDialog.OnPositiveListener({
+          onClick: dialog => {
+            dialog.dismiss();
+            resolve();
+          }
+        })
+      );
+      alert.show();
+    });
   }
 
   public static showInfo(
     title: string,
     subTitle?: string,
     closeBtnTitle?: string
-  ) {
-    let alert = new PromptDialog(app.android.currentContext);
-    alert.setDialogType(SUPPORTED_TYPESI.INFO); /// Info
-    alert.setTitleText(title || "Info");
-    alert.setContentText(subTitle || "");
-    alert.setAnimationEnable(true);
-    alert.setPositiveListener(
-      closeBtnTitle || "Okay",
-      new PromptDialog.OnPositiveListener({
-        onClick: dialog => {
-          dialog.dismiss();
-        }
-      })
-    );
-    alert.show();
+  ): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const alert = new PromptDialog(app.android.currentContext);
+      alert.setDialogType(SUPPORTED_TYPESI.INFO); /// Info
+      alert.setTitleText(title || "Info");
+      alert.setContentText(subTitle || "");
+      alert.setAnimationEnable(true);
+      alert.setPositiveListener(
+        closeBtnTitle || "Okay",
+        new PromptDialog.OnPositiveListener({
+          onClick: dialog => {
+            dialog.dismiss();
+            resolve();
+          }
+        })
+      );
+      alert.show();
+    });
   }
 
   //   public static showEdit(title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number) {
