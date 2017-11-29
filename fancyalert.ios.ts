@@ -137,7 +137,8 @@ export class TNSFancyAlert {
     subTitle?: string,
     closeBtnTitle?: string,
     duration?: number,
-    width?: number
+    width?: number,
+    buttons?: Array<TNSFancyAlertButton>
   ) {
     TNSFancyAlert.show(
       TNSFancyAlert.SUPPORTED_TYPES.SUCCESS,
@@ -145,7 +146,8 @@ export class TNSFancyAlert {
       subTitle,
       closeBtnTitle,
       duration,
-      width
+      width,
+      buttons
     );
   }
 
@@ -154,7 +156,8 @@ export class TNSFancyAlert {
     subTitle?: string,
     closeBtnTitle?: string,
     duration?: number,
-    width?: number
+    width?: number,
+    buttons?: Array<TNSFancyAlertButton>
   ) {
     TNSFancyAlert.show(
       TNSFancyAlert.SUPPORTED_TYPES.ERROR,
@@ -162,7 +165,8 @@ export class TNSFancyAlert {
       subTitle,
       closeBtnTitle,
       duration,
-      width
+      width,
+      buttons
     );
   }
 
@@ -171,7 +175,8 @@ export class TNSFancyAlert {
     subTitle?: string,
     closeBtnTitle?: string,
     duration?: number,
-    width?: number
+    width?: number,
+    buttons?: Array<TNSFancyAlertButton>
   ) {
     TNSFancyAlert.show(
       TNSFancyAlert.SUPPORTED_TYPES.NOTICE,
@@ -179,7 +184,8 @@ export class TNSFancyAlert {
       subTitle,
       closeBtnTitle,
       duration,
-      width
+      width,
+      buttons
     );
   }
 
@@ -188,7 +194,8 @@ export class TNSFancyAlert {
     subTitle?: string,
     closeBtnTitle?: string,
     duration?: number,
-    width?: number
+    width?: number,
+    buttons?: Array<TNSFancyAlertButton>
   ) {
     TNSFancyAlert.show(
       TNSFancyAlert.SUPPORTED_TYPES.WARNING,
@@ -196,7 +203,8 @@ export class TNSFancyAlert {
       subTitle,
       closeBtnTitle,
       duration,
-      width
+      width,
+      buttons
     );
   }
 
@@ -205,7 +213,8 @@ export class TNSFancyAlert {
     subTitle?: string,
     closeBtnTitle?: string,
     duration?: number,
-    width?: number
+    width?: number,
+    buttons?: Array<TNSFancyAlertButton>
   ) {
     TNSFancyAlert.show(
       TNSFancyAlert.SUPPORTED_TYPES.INFO,
@@ -213,7 +222,8 @@ export class TNSFancyAlert {
       subTitle,
       closeBtnTitle,
       duration,
-      width
+      width,
+      buttons
     );
   }
 
@@ -222,7 +232,8 @@ export class TNSFancyAlert {
     subTitle?: string,
     closeBtnTitle?: string,
     duration?: number,
-    width?: number
+    width?: number,
+    buttons?: Array<TNSFancyAlertButton>
   ) {
     TNSFancyAlert.show(
       TNSFancyAlert.SUPPORTED_TYPES.EDIT,
@@ -230,7 +241,8 @@ export class TNSFancyAlert {
       subTitle,
       closeBtnTitle,
       duration,
-      width
+      width,
+      buttons
     );
   }
 
@@ -256,7 +268,8 @@ export class TNSFancyAlert {
     subTitle?: string,
     closeBtnTitle?: string,
     duration?: number,
-    width?: number
+    width?: number,
+    buttons?: Array<TNSFancyAlertButton>
   ) {
     TNSFancyAlert.show(
       TNSFancyAlert.SUPPORTED_TYPES.QUESTION,
@@ -264,7 +277,8 @@ export class TNSFancyAlert {
       subTitle,
       closeBtnTitle || "Dismiss",
       duration,
-      width
+      width,
+      buttons
     );
   }
 
@@ -462,9 +476,17 @@ export class TNSFancyAlert {
     subTitle?: string,
     closeBtnTitle?: string,
     duration?: number,
-    width?: number
+    width?: number,
+    buttons?: Array<TNSFancyAlertButton>
   ) {
     let alert = TNSFancyAlert.createAlert(width);
+
+    // add custom buttons
+    for (let btn of buttons) {
+      alert.addButtonActionBlock(btn.label, () => {
+        btn.action();
+      });
+    }
 
     // apply options to instance
     TNSFancyAlert.applyOptions(alert);
