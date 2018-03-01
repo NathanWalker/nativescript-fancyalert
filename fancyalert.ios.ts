@@ -140,15 +140,20 @@ export class TNSFancyAlert {
     width?: number,
     buttons?: Array<TNSFancyAlertButton>
   ) {
-    TNSFancyAlert.show(
-      TNSFancyAlert.SUPPORTED_TYPES.SUCCESS,
-      title || "Success!",
-      subTitle,
-      closeBtnTitle,
-      duration,
-      width,
-      buttons
-    );
+    return new Promise((resolve, reject) => {
+      TNSFancyAlert.show(
+        TNSFancyAlert.SUPPORTED_TYPES.SUCCESS,
+        title || "Success!",
+        subTitle,
+        closeBtnTitle,
+        duration,
+        width,
+        buttons
+      );
+      // TODO: find way to resolve only after button is tapped
+      // right now just resolve after its shown
+      resolve();
+    });
   }
 
   public static showError(
@@ -159,15 +164,20 @@ export class TNSFancyAlert {
     width?: number,
     buttons?: Array<TNSFancyAlertButton>
   ) {
-    TNSFancyAlert.show(
-      TNSFancyAlert.SUPPORTED_TYPES.ERROR,
-      title || "Error!",
-      subTitle,
-      closeBtnTitle,
-      duration,
-      width,
-      buttons
-    );
+    return new Promise((resolve, reject) => {
+      TNSFancyAlert.show(
+        TNSFancyAlert.SUPPORTED_TYPES.ERROR,
+        title || "Error!",
+        subTitle,
+        closeBtnTitle,
+        duration,
+        width,
+        buttons
+      );
+      // TODO: find way to resolve only after button is tapped
+      // right now just resolve after its shown
+      resolve();
+    });
   }
 
   public static showNotice(
@@ -178,15 +188,20 @@ export class TNSFancyAlert {
     width?: number,
     buttons?: Array<TNSFancyAlertButton>
   ) {
-    TNSFancyAlert.show(
-      TNSFancyAlert.SUPPORTED_TYPES.NOTICE,
-      title || "Notice",
-      subTitle,
-      closeBtnTitle,
-      duration,
-      width,
-      buttons
-    );
+    return new Promise((resolve, reject) => {
+      TNSFancyAlert.show(
+        TNSFancyAlert.SUPPORTED_TYPES.NOTICE,
+        title || "Notice",
+        subTitle,
+        closeBtnTitle,
+        duration,
+        width,
+        buttons
+      );
+      // TODO: find way to resolve only after button is tapped
+      // right now just resolve after its shown
+      resolve();
+    });
   }
 
   public static showWarning(
@@ -197,15 +212,20 @@ export class TNSFancyAlert {
     width?: number,
     buttons?: Array<TNSFancyAlertButton>
   ) {
-    TNSFancyAlert.show(
-      TNSFancyAlert.SUPPORTED_TYPES.WARNING,
-      title || "Warning!",
-      subTitle,
-      closeBtnTitle,
-      duration,
-      width,
-      buttons
-    );
+    return new Promise((resolve, reject) => {
+      TNSFancyAlert.show(
+        TNSFancyAlert.SUPPORTED_TYPES.WARNING,
+        title || "Warning!",
+        subTitle,
+        closeBtnTitle,
+        duration,
+        width,
+        buttons
+      );
+      // TODO: find way to resolve only after button is tapped
+      // right now just resolve after its shown
+      resolve();
+    });
   }
 
   public static showInfo(
@@ -216,15 +236,20 @@ export class TNSFancyAlert {
     width?: number,
     buttons?: Array<TNSFancyAlertButton>
   ) {
-    TNSFancyAlert.show(
-      TNSFancyAlert.SUPPORTED_TYPES.INFO,
-      title || "Info",
-      subTitle,
-      closeBtnTitle,
-      duration,
-      width,
-      buttons
-    );
+    return new Promise((resolve, reject) => {
+      TNSFancyAlert.show(
+        TNSFancyAlert.SUPPORTED_TYPES.INFO,
+        title || "Info",
+        subTitle,
+        closeBtnTitle,
+        duration,
+        width,
+        buttons
+      );
+      // TODO: find way to resolve only after button is tapped
+      // right now just resolve after its shown
+      resolve();
+    });
   }
 
   public static showEdit(
@@ -235,15 +260,20 @@ export class TNSFancyAlert {
     width?: number,
     buttons?: Array<TNSFancyAlertButton>
   ) {
-    TNSFancyAlert.show(
-      TNSFancyAlert.SUPPORTED_TYPES.EDIT,
-      title || "Edit",
-      subTitle,
-      closeBtnTitle,
-      duration,
-      width,
-      buttons
-    );
+    return new Promise((resolve, reject) => {
+      TNSFancyAlert.show(
+        TNSFancyAlert.SUPPORTED_TYPES.EDIT,
+        title || "Edit",
+        subTitle,
+        closeBtnTitle,
+        duration,
+        width,
+        buttons
+      );
+      // TODO: find way to resolve only after button is tapped
+      // right now just resolve after its shown
+      resolve();
+    });
   }
 
   public static showWaiting(
@@ -253,14 +283,19 @@ export class TNSFancyAlert {
     duration?: number,
     width?: number
   ) {
-    TNSFancyAlert.show(
-      TNSFancyAlert.SUPPORTED_TYPES.WAITING,
-      title || "Waiting...",
-      subTitle,
-      closeBtnTitle,
-      duration || 5,
-      width
-    );
+    return new Promise((resolve, reject) => {
+      TNSFancyAlert.show(
+        TNSFancyAlert.SUPPORTED_TYPES.WAITING,
+        title || "Waiting...",
+        subTitle,
+        closeBtnTitle,
+        duration || 5,
+        width
+      );
+      // TODO: find way to resolve only after button is tapped
+      // right now just resolve after its shown
+      resolve();
+    });
   }
 
   public static showQuestion(
@@ -271,15 +306,20 @@ export class TNSFancyAlert {
     width?: number,
     buttons?: Array<TNSFancyAlertButton>
   ) {
-    TNSFancyAlert.show(
-      TNSFancyAlert.SUPPORTED_TYPES.QUESTION,
-      title || "Waiting...",
-      subTitle,
-      closeBtnTitle || "Dismiss",
-      duration,
-      width,
-      buttons
-    );
+    return new Promise((resolve, reject) => {
+      TNSFancyAlert.show(
+        TNSFancyAlert.SUPPORTED_TYPES.QUESTION,
+        title || "Waiting...",
+        subTitle,
+        closeBtnTitle || "Dismiss",
+        duration,
+        width,
+        buttons
+      );
+      // TODO: find way to resolve only after button is tapped
+      // right now just resolve after its shown
+      resolve();
+    });
   }
 
   public static showCustomButtonTimer(
@@ -293,20 +333,25 @@ export class TNSFancyAlert {
     duration?: number,
     width?: number
   ) {
-    let alert = TNSFancyAlert.createAlert(width);
-    buttonIndex = buttonIndex || 0;
-    reverse = reverse || false;
-    title = title || "Title";
-    alert.addTimerToButtonIndexReverse(buttonIndex, reverse);
-    TNSFancyAlert.showCustom(
-      alert,
-      imageName,
-      color,
-      title,
-      subTitle,
-      closeBtnTitle || "Dismiss",
-      duration || 5
-    );
+    return new Promise((resolve, reject) => {
+      let alert = TNSFancyAlert.createAlert(width);
+      buttonIndex = buttonIndex || 0;
+      reverse = reverse || false;
+      title = title || "Title";
+      alert.addTimerToButtonIndexReverse(buttonIndex, reverse);
+      TNSFancyAlert.showCustom(
+        alert,
+        imageName,
+        color,
+        title,
+        subTitle,
+        closeBtnTitle || "Dismiss",
+        duration || 5
+      );
+      // TODO: find way to resolve only after button is tapped
+      // right now just resolve after its shown
+      resolve();
+    });
   }
 
   public static showCustomImage(
@@ -318,16 +363,21 @@ export class TNSFancyAlert {
     duration?: number,
     width?: number
   ) {
-    let alert = TNSFancyAlert.createAlert(width);
-    let image = UIImage.imageNamed(imageName);
-    alert.showCustomColorTitleSubTitleCloseButtonTitleDuration(
-      image,
-      new Color(color).ios,
-      title,
-      subTitle,
-      closeBtnTitle || "Ok",
-      duration || 0
-    );
+    return new Promise((resolve, reject) => {
+      let alert = TNSFancyAlert.createAlert(width);
+      let image = UIImage.imageNamed(imageName);
+      alert.showCustomColorTitleSubTitleCloseButtonTitleDuration(
+        image,
+        new Color(color).ios,
+        title,
+        subTitle,
+        closeBtnTitle || "Ok",
+        duration || 0
+      );
+      // TODO: find way to resolve only after button is tapped
+      // right now just resolve after its shown
+      resolve();
+    });
   }
 
   public static showCustomButtons(
@@ -340,21 +390,26 @@ export class TNSFancyAlert {
     duration?: number,
     width?: number
   ) {
-    let alert = TNSFancyAlert.createAlert(width);
-    for (let btn of buttons) {
-      alert.addButtonActionBlock(btn.label, () => {
-        btn.action();
-      });
-    }
-    TNSFancyAlert.showCustom(
-      alert,
-      image,
-      color,
-      title,
-      subTitle,
-      null,
-      duration
-    );
+    return new Promise((resolve, reject) => {
+      let alert = TNSFancyAlert.createAlert(width);
+      for (let btn of buttons) {
+        alert.addButtonActionBlock(btn.label, () => {
+          btn.action();
+        });
+      }
+      TNSFancyAlert.showCustom(
+        alert,
+        image,
+        color,
+        title,
+        subTitle,
+        null,
+        duration
+      );
+      // TODO: find way to resolve only after button is tapped
+      // right now just resolve after its shown
+      resolve();
+    });
   }
 
   public static showCustomTextAttributes(
@@ -368,20 +423,23 @@ export class TNSFancyAlert {
     duration?: number,
     width?: number
   ) {
-    let alert = TNSFancyAlert.createAlert(width);
-    alert.attributedFormatBlock = attributionBlock;
-    alert.addButtonActionBlock(button.label, () => {
-      button.action();
+    return new Promise((resolve, reject) => {
+      let alert = TNSFancyAlert.createAlert(width);
+      alert.attributedFormatBlock = attributionBlock;
+      alert.addButtonActionBlock(button.label, () => {
+        button.action();
+        resolve();
+      });
+      TNSFancyAlert.showCustom(
+        alert,
+        image,
+        color,
+        title,
+        subTitle,
+        null,
+        duration
+      );
     });
-    TNSFancyAlert.showCustom(
-      alert,
-      image,
-      color,
-      title,
-      subTitle,
-      null,
-      duration
-    );
   }
 
   public static showTextField(
@@ -396,22 +454,25 @@ export class TNSFancyAlert {
     duration?: number,
     width?: number
   ) {
-    let alert = TNSFancyAlert.createAlert(width);
-    var textField = alert.addTextField(placeholder);
-    if (initialValue) textField.text = initialValue;
-    alert.addButtonActionBlock(button.label, () => {
-      textField.resignFirstResponder();
-      button.action(textField.text);
+    return new Promise((resolve, reject) => {
+      let alert = TNSFancyAlert.createAlert(width);
+      var textField = alert.addTextField(placeholder);
+      if (initialValue) textField.text = initialValue;
+      alert.addButtonActionBlock(button.label, () => {
+        textField.resignFirstResponder();
+        button.action(textField.text);
+        resolve();
+      });
+      TNSFancyAlert.showCustom(
+        alert,
+        image,
+        color,
+        title,
+        subTitle,
+        null,
+        duration
+      );
     });
-    TNSFancyAlert.showCustom(
-      alert,
-      image,
-      color,
-      title,
-      subTitle,
-      null,
-      duration
-    );
   }
 
   public static showSwitch(
@@ -426,22 +487,25 @@ export class TNSFancyAlert {
     duration?: number,
     width?: number
   ) {
-    let alert = TNSFancyAlert.createAlert(width);
-    var switchView = alert.addSwitchViewWithLabel(switchLabel);
-    switchView.tintColor = new Color(switchColor).ios;
+    return new Promise((resolve, reject) => {
+      let alert = TNSFancyAlert.createAlert(width);
+      var switchView = alert.addSwitchViewWithLabel(switchLabel);
+      switchView.tintColor = new Color(switchColor).ios;
 
-    alert.addButtonActionBlock(button.label, () => {
-      button.action(switchView.selected);
+      alert.addButtonActionBlock(button.label, () => {
+        button.action(switchView.selected);
+        resolve();
+      });
+      TNSFancyAlert.showCustom(
+        alert,
+        image,
+        color,
+        title,
+        subTitle,
+        null,
+        duration
+      );
     });
-    TNSFancyAlert.showCustom(
-      alert,
-      image,
-      color,
-      title,
-      subTitle,
-      null,
-      duration
-    );
   }
 
   public static showCustomView(
@@ -454,17 +518,22 @@ export class TNSFancyAlert {
     duration?: number,
     width?: number
   ) {
-    let alert = TNSFancyAlert.createAlert(width);
-    alert.addCustomView(customView);
-    TNSFancyAlert.showCustom(
-      alert,
-      image,
-      color,
-      title,
-      subTitle,
-      closeBtnTitle,
-      duration
-    );
+    return new Promise((resolve, reject) => {
+      let alert = TNSFancyAlert.createAlert(width);
+      alert.addCustomView(customView);
+      TNSFancyAlert.showCustom(
+        alert,
+        image,
+        color,
+        title,
+        subTitle,
+        closeBtnTitle,
+        duration
+      );
+      // TODO: find way to resolve only after button is tapped
+      // right now just resolve after its shown
+      resolve();
+    });
   }
 
   /**
@@ -482,10 +551,12 @@ export class TNSFancyAlert {
     let alert = TNSFancyAlert.createAlert(width);
 
     // add custom buttons
-    for (let btn of buttons) {
-      alert.addButtonActionBlock(btn.label, () => {
-        btn.action();
-      });
+    if (buttons) {
+      for (let btn of buttons) {
+        alert.addButtonActionBlock(btn.label, () => {
+          btn.action();
+        });
+      }
     }
 
     // apply options to instance

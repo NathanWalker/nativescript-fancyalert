@@ -5,3 +5,4 @@ screenshots/
 *.ts
 !*.d.ts
 tsconfig.json
+package-lock.json

@@ -2,6 +2,7 @@
 *.js.map
 *.log
 *.d.ts
+!index.d.ts
 demo/app/*.js
 demo/*.d.ts
 demo/lib
@@ -10,3 +11,4 @@ demo/node_modules
 node_modules
 !demo/references.d.ts
 !fancyalert.d.ts
+package-lock.json
