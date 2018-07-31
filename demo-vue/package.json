@@ -19,7 +19,7 @@
     "nativescript-fancyalert": "file:../src",
     "nativescript-theme-core": "^1.0.4",
     "nativescript-vue": "^2.0.0-alpha.1",
-    "tns-core-modules": "~4.1.0"
+    "tns-core-modules": "~4.1.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
