@@ -1,0 +1,21 @@
+{
+  "name": "demo-vue",
+  "description": "A native application built with NativeScript-Vue",
+  "license": "MIT",
+  "readme": "NativeScript-Vue Application",
+  "nativescript": {
+    "id": "org.nativescript.demo"
+  },
+  "dependencies": {
+    "nativescript-theme-core": "^1.0.4",
+    "nativescript-vue": "^2.0.0-alpha.1",
+    "tns-core-modules": "~4.1.0",
+    "nativescript-fancyalert": "file:../../src"
+  },
+  "devDependencies": {
+    "babel-traverse": "6.26.0",
+    "babel-types": "6.26.0",
+    "babylon": "6.18.0",
+    "lazy": "1.0.11"
+  }
+}
