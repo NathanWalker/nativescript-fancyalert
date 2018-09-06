@@ -1,84 +1,11 @@
 import * as app from "tns-core-modules/application";
-import { Color } from "tns-core-modules/color";
-import { TNSFancyAlertButton } from "./common";
 
 export * from "./common";
 
 declare var cn: any;
 
-const PromptDialog = cn.refactor.lib.colordialog.PromptDialog;
-
-export enum SUPPORTED_TYPESI {
-  INFO = 0,
-  HELP = 1,
-  WRONG = 2,
-  SUCCESS = 3,
-  WARNING = 4
-}
-
 export class TNSFancyAlert {
-  // Dismiss on tap outside (Default is NO)
   public static shouldDismissOnTapOutside: boolean = false;
-
-  // public static SUPPORTED_TYPES: SUPPORTED_TYPESI = {
-  //     SUCCESS: 'Success',
-  //     ERROR: 'Error',
-  //     NOTICE: 'Notice',
-  //     WARNING: 'Warning',
-  //     INFO: 'Info',
-  //     EDIT: 'Edit',
-  //     WAITING: 'Waiting',
-  //     QUESTION: 'Question'
-  // };
-
-  //   //Show animation type (Default is SlideInFromTop)
-  //   public static showAnimationType: SHOW_ANIMATION_TYPESI;
-
-  //   public static SHOW_ANIMATION_TYPES: SHOW_ANIMATION_TYPESI = {
-  //     FadeIn: SCLAlertViewShowAnimation.FadeIn,
-  //     SlideInFromBottom: SCLAlertViewShowAnimation.SlideInFromBottom,
-  //     SlideInFromTop: SCLAlertViewShowAnimation.SlideInFromTop,
-  //     SlideInFromLeft: SCLAlertViewShowAnimation.SlideInFromLeft,
-  //     SlideInFromRight: SCLAlertViewShowAnimation.SlideInFromRight,
-  //     SlideInFromCenter: SCLAlertViewShowAnimation.SlideInFromCenter,
-  //     SlideInToCenter: SCLAlertViewShowAnimation.SlideInToCenter
-  //   };
-
-  //   //Set background type (Default is Shadow)
-  //   public static backgroundType: BACKGROUND_TYPESI;
-
-  //   public static BACKGROUND_TYPES: BACKGROUND_TYPESI = {
-  //     Shadow: SCLAlertViewBackground.Shadow,
-  //     Blur: SCLAlertViewBackground.Blur,
-  //     Transparent: SCLAlertViewBackground.Transparent
-  //   }
-
-  //   //Overwrite SCLAlertView (Buttons, top circle and borders) colors
-  //   public static customViewColor: string;
-
-  //   //Set custom tint color for icon image.
-  //   public static iconTintColor: string;
-
-  //   // set custom title color
-  //   public static titleColor: string;
-
-  //   // set custom body text color
-  //   public static bodyTextColor: string;
-
-  //   //Override top circle tint color with background color
-  //   public static tintTopCircle: boolean = true;
-
-  //   //Set custom corner radius for SCLAlertView
-  //   public static cornerRadius: number;
-
-  //   //Overwrite SCLAlertView background color
-  //   public static backgroundViewColor: string;
-
-  //   //Make the top circle icon larger
-  //   public static useLargerIcon: boolean = false;
-
-  //   //Using sound
-  //   public static soundURL: string;
 
   public static showSuccess(
     title: string,
@@ -86,7 +13,9 @@ export class TNSFancyAlert {
     closeBtnTitle?: string
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      const alert = new PromptDialog(app.android.currentContext);
+      const alert = new cn.refactor.lib.colordialog.PromptDialog(
+        app.android.currentContext
+      );
       alert.setCanceledOnTouchOutside(TNSFancyAlert.shouldDismissOnTapOutside);
       alert.setDialogType(SUPPORTED_TYPESI.SUCCESS);
       alert.setTitleText(title || "Success!");
@@ -94,7 +23,7 @@ export class TNSFancyAlert {
       alert.setAnimationEnable(true);
       alert.setPositiveListener(
         closeBtnTitle || "Ok",
-        new PromptDialog.OnPositiveListener({
+        new cn.refactor.lib.colordialog.PromptDialog.OnPositiveListener({
           onClick: dialog => {
             dialog.dismiss();
             resolve();
@@ -111,7 +40,9 @@ export class TNSFancyAlert {
     closeBtnTitle?: string
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      const alert = new PromptDialog(app.android.currentContext);
+      const alert = new cn.refactor.lib.colordialog.PromptDialog(
+        app.android.currentContext
+      );
       alert.setCanceledOnTouchOutside(TNSFancyAlert.shouldDismissOnTapOutside);
       alert.setDialogType(SUPPORTED_TYPESI.WRONG);
       alert.setTitleText(title || "Error!");
@@ -119,7 +50,7 @@ export class TNSFancyAlert {
       alert.setAnimationEnable(true);
       alert.setPositiveListener(
         closeBtnTitle || "Ok",
-        new PromptDialog.OnPositiveListener({
+        new cn.refactor.lib.colordialog.PromptDialog.OnPositiveListener({
           onClick: dialog => {
             dialog.dismiss();
             resolve();
@@ -136,7 +67,9 @@ export class TNSFancyAlert {
     closeBtnTitle?: string
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      const alert = new PromptDialog(app.android.currentContext);
+      const alert = new cn.refactor.lib.colordialog.PromptDialog(
+        app.android.currentContext
+      );
       alert.setCanceledOnTouchOutside(TNSFancyAlert.shouldDismissOnTapOutside);
       alert.setDialogType(SUPPORTED_TYPESI.HELP);
       alert.setTitleText(title || "Notice");
@@ -144,7 +77,7 @@ export class TNSFancyAlert {
       alert.setAnimationEnable(true);
       alert.setPositiveListener(
         closeBtnTitle || "Ok",
-        new PromptDialog.OnPositiveListener({
+        new cn.refactor.lib.colordialog.PromptDialog.OnPositiveListener({
           onClick: dialog => {
             dialog.dismiss();
             resolve();
@@ -161,7 +94,9 @@ export class TNSFancyAlert {
     closeBtnTitle?: string
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      const alert = new PromptDialog(app.android.currentContext);
+      const alert = new cn.refactor.lib.colordialog.PromptDialog(
+        app.android.currentContext
+      );
       alert.setCanceledOnTouchOutside(TNSFancyAlert.shouldDismissOnTapOutside);
       alert.setDialogType(SUPPORTED_TYPESI.WARNING);
       alert.setTitleText(title || "Warning!");
@@ -169,7 +104,7 @@ export class TNSFancyAlert {
       alert.setAnimationEnable(true);
       alert.setPositiveListener(
         closeBtnTitle || "Ok",
-        new PromptDialog.OnPositiveListener({
+        new cn.refactor.lib.colordialog.PromptDialog.OnPositiveListener({
           onClick: dialog => {
             dialog.dismiss();
             resolve();
@@ -186,7 +121,9 @@ export class TNSFancyAlert {
     closeBtnTitle?: string
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      const alert = new PromptDialog(app.android.currentContext);
+      const alert = new cn.refactor.lib.colordialog.PromptDialog(
+        app.android.currentContext
+      );
       alert.setCanceledOnTouchOutside(TNSFancyAlert.shouldDismissOnTapOutside);
       alert.setDialogType(SUPPORTED_TYPESI.INFO); /// Info
       alert.setTitleText(title || "Info");
@@ -194,7 +131,7 @@ export class TNSFancyAlert {
       alert.setAnimationEnable(true);
       alert.setPositiveListener(
         closeBtnTitle || "Ok",
-        new PromptDialog.OnPositiveListener({
+        new cn.refactor.lib.colordialog.PromptDialog.OnPositiveListener({
           onClick: dialog => {
             dialog.dismiss();
             resolve();
@@ -363,4 +300,12 @@ export class TNSFancyAlert {
   //       return SCLAlertView.alloc().initWithNewWindow();
   //     }
   //   }
+}
+
+export enum SUPPORTED_TYPESI {
+  INFO = 0,
+  HELP = 1,
+  WRONG = 2,
+  SUCCESS = 3,
+  WARNING = 4
 }

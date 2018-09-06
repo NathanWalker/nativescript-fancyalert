@@ -1,9 +1,5 @@
 android {
-    productFlavors {
-        "nativescriptfancyalert" {
-            dimension "nativescriptfancyalert"
-        }
-    }
+    
 }
 
 repositories {
