@@ -1,8 +1,0 @@
-demo/
-screenshots/
-*.png
-*.log
-*.ts
-!*.d.ts
-tsconfig.json
-package-lock.json
