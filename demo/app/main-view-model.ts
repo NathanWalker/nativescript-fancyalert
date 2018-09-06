@@ -1,8 +1,7 @@
-import * as app from "tns-core-modules/application";
-import { Observable } from "tns-core-modules/data/observable";
-import { Color } from "tns-core-modules/color";
-import { isIOS, isAndroid } from "tns-core-modules/platform";
 import { TNSFancyAlert, TNSFancyAlertButton } from "nativescript-fancyalert";
+import { Color } from "tns-core-modules/color";
+import { Observable } from "tns-core-modules/data/observable";
+import { isIOS } from "tns-core-modules/platform";
 
 declare var NSMutableAttributedString: any,
   NSForegroundColorAttributeName: any,
