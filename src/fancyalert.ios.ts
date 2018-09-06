@@ -3,21 +3,6 @@ import { TNSFancyAlertButton } from "./common";
 
 export * from "./common";
 
-declare var SCLAlertView: any,
-  UIImage: any,
-  UIView: any,
-  CGRectMake: any,
-  SlideOutToBottom: any,
-  NSBundle: any,
-  NSURL: any,
-  UITextFieldViewModeWhileEditing: any,
-  UITextField: any,
-  UITextBorderStyleRoundedRect: any,
-  UIReturnKeyDone: any,
-  SCLAlertViewHideAnimation: any,
-  SCLAlertViewShowAnimation: any,
-  SCLAlertViewBackground: any;
-
 export interface SUPPORTED_TYPESI {
   SUCCESS: string;
   ERROR: string;
