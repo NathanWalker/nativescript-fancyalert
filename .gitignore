@@ -3,12 +3,14 @@ src/*.js.map
 src/*.log
 src/*.d.ts
 !index.d.ts
+demo/package-lock.json
 demo/app/*.js
 demo/*.d.ts
 demo/lib
 demo/hooks
 demo/platforms
 demo/node_modules
+demo-vue/package-lock.json
 demo-vue/platforms
 demo-vue/node_modules
 src/node_modules
