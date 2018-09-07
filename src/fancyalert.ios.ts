@@ -398,7 +398,7 @@ export class TNSFancyAlert {
   }
 
   public static showCustomTextAttributes(
-    attributionBlock: Function,
+    attributionBlock: (p1: string) => NSAttributedString,
     button: TNSFancyAlertButton,
     image: any,
     color: string,
@@ -627,7 +627,7 @@ export class TNSFancyAlert {
 
     if (TNSFancyAlert.soundURL)
       alert.soundURL = NSURL.fileURLWithPath(
-        `${NSBundle.mainBundle().resourcePath}/${TNSFancyAlert.soundURL}`
+        `${NSBundle.mainBundle.resourcePath}/${TNSFancyAlert.soundURL}`
       );
   }
 

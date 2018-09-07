@@ -7,10 +7,11 @@
         "noLib": false,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
+        "skipLibCheck": true,
         "lib": [
-            "dom"
+            "dom",
+            "es6"
         ],
-        "sourceMap": true,
         "pretty": true,
         "allowUnreachableCode": false,
         "allowUnusedLabels": false,
@@ -24,7 +25,17 @@
             "./node_modules/@types",
             "./node_modules"
         ],
-        "types": []
+        "types": [],
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+                "./node_modules/tns-core-modules/*",
+                "./node_modules/*"
+            ],
+            "~/*": [
+                "app/*"
+            ]
+        }
     },
     "exclude": [
         "node_modules",

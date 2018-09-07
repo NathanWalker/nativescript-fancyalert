@@ -6,6 +6,7 @@ src/*.d.ts
 demo/app/*.js
 demo/*.d.ts
 demo/lib
+demo/hooks
 demo/platforms
 demo/node_modules
 demo-vue/platforms
