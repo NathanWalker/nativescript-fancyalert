@@ -178,14 +178,14 @@ TNSFancyAlert.showSwitch(
 
 #### TNSFancyAlert - Methods
 
-- `showSuccess(title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
-- `showError(title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
-- `showNotice(title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
-- `showWarning(title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
-- `showInfo(title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
-- `showEdit(title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
+- `showSuccess(title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number, buttons?: Array<TNSFancyAlertButton>)`
+- `showError(title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number, buttons?: Array<TNSFancyAlertButton>)`
+- `showNotice(title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number, buttons?: Array<TNSFancyAlertButton>)`
+- `showWarning(title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number, buttons?: Array<TNSFancyAlertButton>)`
+- `showInfo(title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number, buttons?: Array<TNSFancyAlertButton>)`
+- `showEdit(title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number, buttons?: Array<TNSFancyAlertButton>)`
 - `showWaiting(title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
-- `showQuestion(title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
+- `showQuestion(title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number, buttons?: Array<TNSFancyAlertButton>)`
 - `showCustomButtonTimer(buttonIndex: number, reverse?: boolean, imageName?: string, color?: string, title?: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
 - `showCustomImage(imageName: string, color: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
 - `showCustomButtons(buttons: Array<TNSFancyAlertButton>, imageName: string, color: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
@@ -193,7 +193,7 @@ TNSFancyAlert.showSwitch(
 - `showTextField(placeholder: string, initialValue: string, button: TNSFancyAlertButton, imageName: string, color: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
 - `showSwitch(switchLabel: string, switchColor: string, button: TNSFancyAlertButton, imageName: string, color: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
 - `showCustomView(customView: any, imageName?: string, color?: string, title?: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
-- `show(type: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number)`
+- `show(type: string, title: string, subTitle?: string, closeBtnTitle?: string, duration?: number, width?: number, buttons?: Array<TNSFancyAlertButton>)`
 - `showCustom(alert: any, imageName: string, color: string, title?: string, subTitle?: string, closeBtnTitle?: string, duration?: number)`
 - `createAlert(width?: number)`
 
