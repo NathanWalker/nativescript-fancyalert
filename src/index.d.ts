@@ -36,7 +36,7 @@ export interface BACKGROUND_TYPESI {
 export declare class TNSFancyAlertButton {
   label: string;
   action: (arg?: any) => void;
-  constructor(model?: any) {}
+  constructor(model?: any);
 }
 export declare class TNSFancyAlert {
   static SUPPORTED_TYPES: SUPPORTED_TYPESI;
