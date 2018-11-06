@@ -48,7 +48,7 @@ export declare class TNSFancyAlertButton {
   action: (arg?: any) => void;
   // this will give you the SLCButton (child of UIButton) instance that you can style however you'd like
   applyStyle: (btn: any) => void;
-  constructor(model?: any) {}
+  constructor(model?: any);
 }
 export declare class TNSFancyAlert {
   static SUPPORTED_TYPES: IFancyAlertSupportedTypes;
