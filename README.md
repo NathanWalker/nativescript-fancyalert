@@ -243,7 +243,50 @@ TNSFancyAlert.showError("Error!", "Something bad happened.", "Close").then(
     contentImage?: any
   ): Promise<any>```
 
+# TNSFancyAlertButton (iOS only)
 
+This class can be instantiated on iOS to configure buttons in the fancy alerts.
+
+```
+export class TNSFancyAlertButton {
+  public label: string;
+  public action: Function;
+  public applyStyle: (btn: any) => void;
+
+  constructor(model?: any) {
+    if (model) {
+      this.label = model.label;
+      this.action = model.action;
+      this.applyStyle = model.applyStyle;
+    }
+  }
+}
+```
+
+* `label`: display text on the button
+* `action`: the method to invoke when the button is tapped on
+* `applyStyle`: a method you can configure to style the button however you'd like using iOS properties. This method will hand back an instance of `SLCButton` which inherits from `UIButton`. You can see more of what methods are available on this class [here](https://github.com/dogo/SCLAlertView/blob/develop/SCLAlertView/SCLButton.m).
+
+Here's an example of how to setup a custom background color:
+
+```
+new TNSFancyAlertButton({
+  label: 'Ok',
+  action: () => {
+    // the action to take
+  },
+  applyStyle: (btn: UIButton) => {
+    // we can use UIButton typing when using tns-platform-declarations
+    // however we can cast to any since you are likely not using SLCAlertView typings (they are in this repo if you want to use them :) )
+    // refer to https://github.com/dogo/SCLAlertView/blob/develop/SCLAlertView/SCLButton.m on what properties are available to customize
+
+    (<any>btn).buttonFormatBlock = () => {
+      // set a custom backgroundColor
+      return new (NSDictionary as any)([new Color('#3a3939').ios], ['backgroundColor']);
+    }
+  }
+}),
+```
 
 ## Why the TNS prefixed name?
 
