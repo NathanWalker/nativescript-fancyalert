@@ -161,11 +161,11 @@ TNSFancyAlert.showSwitch(
 
 | Property                                                 | Description                                                                                                                                                                  |
 | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `TNSFancyAlert.SUPPORTED_TYPES: SUPPORTED_TYPESI`        | Different supported style types.                                                                                                                                             |
+| `TNSFancyAlert.SUPPORTED_TYPES: IFancyAlertSupportedTypes`        | Different supported style types.                                                                                                                                             |
 | `TNSFancyAlert.shouldDismissOnTapOutside: boolean`       | Should dismiss when tapped outside.                                                                                                                                          |
-| `TNSFancyAlert.hideAnimationType: HIDE_ANIMATION_TYPESI` | Use `TNSFancyAlert.HIDE_ANIMATION_TYPES` to set. Supports: FadeOut, SlideOutToBottom, SlideOutToTop, SlideOutToLeft, SlideOutToRight, SlideOutToCenter, SlideOutFromCenter.  |
-| `TNSFancyAlert.showAnimationType: SHOW_ANIMATION_TYPESI` | Use `TNSFancyAlert.SHOW_ANIMATION_TYPES` to set. Supports: FadeIn, SlideInFromBottom, SlideInFromTop, SlideInFromLeft, SlideInFromRight, SlideInFromCenter, SlideInToCenter. |
-| `TNSFancyAlert.backgroundType: BACKGROUND_TYPESI`        | Use `TNSFancyAlert.BACKGROUND_TYPES` to set. Supports: Shadow, Blur, Transparent.                                                                                            |
+| `TNSFancyAlert.hideAnimationType: IFancyAlertHideAnimationTypes` | Use `TNSFancyAlert.HIDE_ANIMATION_TYPES` to set. Supports: FadeOut, SlideOutToBottom, SlideOutToTop, SlideOutToLeft, SlideOutToRight, SlideOutToCenter, SlideOutFromCenter.  |
+| `TNSFancyAlert.showAnimationType: IFancyAlertShowAnimationTypes` | Use `TNSFancyAlert.SHOW_ANIMATION_TYPES` to set. Supports: FadeIn, SlideInFromBottom, SlideInFromTop, SlideInFromLeft, SlideInFromRight, SlideInFromCenter, SlideInToCenter. |
+| `TNSFancyAlert.backgroundType: IFancyAlertBackgroundTypes`        | Use `TNSFancyAlert.BACKGROUND_TYPES` to set. Supports: Shadow, Blur, Transparent.                                                                                            |
 | `TNSFancyAlert.customViewColor: string`                  | Overwrite (Buttons, top circle and borders) colors.                                                                                                                          |
 | `TNSFancyAlert.iconTintColor: string`                    | Set custom tint color for icon image.                                                                                                                                        |
 | `TNSFancyAlert.titleColor: string`                       | Set custom title color.                                                                                                                                                      |
@@ -175,6 +175,7 @@ TNSFancyAlert.showSwitch(
 | `TNSFancyAlert.backgroundViewColor: string`              | Overwrite background color                                                                                                                                                   |
 | `TNSFancyAlert.useLargerIcon: boolean`                   | Make the top circle icon larger                                                                                                                                              |
 | `TNSFancyAlert.soundURL: string`                         | Use mp3 from App_Resources when alert shows.                                                                                                                                 |
+| `TNSFancyAlert.textDisplayOptions: IFancyAlertTextOptions`               | IOS Only. Text display options                                                                                                                                                         |
 
 #### TNSFancyAlert - Methods
 
@@ -230,6 +231,62 @@ TNSFancyAlert.showError("Error!", "Something bad happened.", "Close").then(
 - `showNotice(title: string, subTitle?: string, closeBtnTitle?: string): Promise<any>`
 - `showWarning(title: string, subTitle?: string, closeBtnTitle?: string): Promise<any>`
 - `showInfo(title: string, subTitle?: string, closeBtnTitle?: string): Promise<any>`
+- ```
+  showColorDialog(
+    title: string,
+    subTitle?: string,
+    okBtnTitle?: string,
+    cancelBtnTitle?: string,
+    backgroundColor?: string,
+    titleTextColor?: string,
+    contextTextColor?: string,
+    contentImage?: any
+  ): Promise<any>```
+
+# TNSFancyAlertButton (iOS only)
+
+This class can be instantiated on iOS to configure buttons in the fancy alerts.
+
+```
+export class TNSFancyAlertButton {
+  public label: string;
+  public action: Function;
+  public applyStyle: (btn: any) => void;
+
+  constructor(model?: any) {
+    if (model) {
+      this.label = model.label;
+      this.action = model.action;
+      this.applyStyle = model.applyStyle;
+    }
+  }
+}
+```
+
+* `label`: display text on the button
+* `action`: the method to invoke when the button is tapped on
+* `applyStyle`: a method you can configure to style the button however you'd like using iOS properties. This method will hand back an instance of `SLCButton` which inherits from `UIButton`. You can see more of what methods are available on this class [here](https://github.com/dogo/SCLAlertView/blob/develop/SCLAlertView/SCLButton.m).
+
+Here's an example of how to setup a custom background color:
+
+```
+new TNSFancyAlertButton({
+  label: 'Ok',
+  action: () => {
+    // the action to take
+  },
+  applyStyle: (btn: UIButton) => {
+    // we can use UIButton typing when using tns-platform-declarations
+    // however we can cast to any since you are likely not using SLCAlertView typings (they are in this repo if you want to use them :) )
+    // refer to https://github.com/dogo/SCLAlertView/blob/develop/SCLAlertView/SCLButton.m on what properties are available to customize
+
+    (<any>btn).buttonFormatBlock = () => {
+      // set a custom backgroundColor
+      return new (NSDictionary as any)([new Color('#3a3939').ios], ['backgroundColor']);
+    }
+  }
+}),
+```
 
 ## Why the TNS prefixed name?
 

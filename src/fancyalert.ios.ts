@@ -1,47 +1,17 @@
 import { Color } from "tns-core-modules/color";
 import { TNSFancyAlertButton } from "./common";
+import {
+  IFancyAlertSupportedTypes,
+  IFancyAlertTextOptions,
+  IFancyAlertShowAnimationTypes,
+  IFancyAlertHideAnimationTypes,
+  IFancyAlertBackgroundTypes
+} from "./";
 
 export * from "./common";
 
-export interface SUPPORTED_TYPESI {
-  SUCCESS: string;
-  ERROR: string;
-  NOTICE: string;
-  WARNING: string;
-  INFO: string;
-  EDIT: string;
-  WAITING: string;
-  QUESTION: string;
-}
-
-export interface HIDE_ANIMATION_TYPESI {
-  FadeOut: any;
-  SlideOutToBottom: any;
-  SlideOutToTop: any;
-  SlideOutToLeft: any;
-  SlideOutToRight: any;
-  SlideOutToCenter: any;
-  SlideOutFromCenter: any;
-}
-
-export interface SHOW_ANIMATION_TYPESI {
-  FadeIn: any;
-  SlideInFromBottom: any;
-  SlideInFromTop: any;
-  SlideInFromLeft: any;
-  SlideInFromRight: any;
-  SlideInFromCenter: any;
-  SlideInToCenter: any;
-}
-
-export interface BACKGROUND_TYPESI {
-  Shadow: any;
-  Blur: any;
-  Transparent: any;
-}
-
 export class TNSFancyAlert {
-  public static SUPPORTED_TYPES: SUPPORTED_TYPESI = {
+  public static SUPPORTED_TYPES: IFancyAlertSupportedTypes = {
     SUCCESS: "Success",
     ERROR: "Error",
     NOTICE: "Notice",
@@ -55,10 +25,13 @@ export class TNSFancyAlert {
   //Dismiss on tap outside (Default is NO)
   public static shouldDismissOnTapOutside: boolean = false;
 
-  //Hide animation type (Default is FadeOut)
-  public static hideAnimationType: HIDE_ANIMATION_TYPESI;
+  // font handling
+  public static textDisplayOptions: IFancyAlertTextOptions;
 
-  public static HIDE_ANIMATION_TYPES: HIDE_ANIMATION_TYPESI = {
+  //Hide animation type (Default is FadeOut)
+  public static hideAnimationType: IFancyAlertHideAnimationTypes;
+
+  public static HIDE_ANIMATION_TYPES: IFancyAlertHideAnimationTypes = {
     FadeOut: SCLAlertViewHideAnimation.FadeOut,
     SlideOutToBottom: SCLAlertViewHideAnimation.SlideOutToBottom,
     SlideOutToTop: SCLAlertViewHideAnimation.SlideOutToTop,
@@ -69,9 +42,9 @@ export class TNSFancyAlert {
   };
 
   //Show animation type (Default is SlideInFromTop)
-  public static showAnimationType: SHOW_ANIMATION_TYPESI;
+  public static showAnimationType: IFancyAlertShowAnimationTypes;
 
-  public static SHOW_ANIMATION_TYPES: SHOW_ANIMATION_TYPESI = {
+  public static SHOW_ANIMATION_TYPES: IFancyAlertShowAnimationTypes = {
     FadeIn: SCLAlertViewShowAnimation.FadeIn,
     SlideInFromBottom: SCLAlertViewShowAnimation.SlideInFromBottom,
     SlideInFromTop: SCLAlertViewShowAnimation.SlideInFromTop,
@@ -82,9 +55,9 @@ export class TNSFancyAlert {
   };
 
   //Set background type (Default is Shadow)
-  public static backgroundType: BACKGROUND_TYPESI;
+  public static backgroundType: IFancyAlertBackgroundTypes;
 
-  public static BACKGROUND_TYPES: BACKGROUND_TYPESI = {
+  public static BACKGROUND_TYPES: IFancyAlertBackgroundTypes = {
     Shadow: SCLAlertViewBackground.Shadow,
     Blur: SCLAlertViewBackground.Blur,
     Transparent: SCLAlertViewBackground.Transparent
@@ -320,6 +293,8 @@ export class TNSFancyAlert {
   ) {
     return new Promise((resolve, reject) => {
       let alert = TNSFancyAlert.createAlert(width);
+      TNSFancyAlert.applyTextDisplayOptions(alert);
+
       buttonIndex = buttonIndex || 0;
       reverse = reverse || false;
       title = title || "Title";
@@ -350,6 +325,8 @@ export class TNSFancyAlert {
   ) {
     return new Promise((resolve, reject) => {
       let alert = TNSFancyAlert.createAlert(width);
+      TNSFancyAlert.applyTextDisplayOptions(alert);
+
       let image = UIImage.imageNamed(imageName);
       alert.showCustomColorTitleSubTitleCloseButtonTitleDuration(
         image,
@@ -377,10 +354,15 @@ export class TNSFancyAlert {
   ) {
     return new Promise((resolve, reject) => {
       let alert = TNSFancyAlert.createAlert(width);
+      TNSFancyAlert.applyTextDisplayOptions(alert);
+
       for (let btn of buttons) {
-        alert.addButtonActionBlock(btn.label, () => {
+        const slcBtn = alert.addButtonActionBlock(btn.label, () => {
           btn.action();
         });
+        if (btn.applyStyle) {
+          btn.applyStyle(slcBtn);
+        }
       }
       TNSFancyAlert.showCustom(
         alert,
@@ -397,6 +379,37 @@ export class TNSFancyAlert {
     });
   }
 
+  public static applyTextDisplayOptions(alert: SCLAlertView) {
+    if (TNSFancyAlert.textDisplayOptions) {
+      const systemFont = UIFont.systemFontOfSize(12);
+      // get default font family name
+      let fontFamily = systemFont.familyName;
+      // default size
+      let fontSize = 14;
+
+      // custom font sizes
+      const titleSize = TNSFancyAlert.textDisplayOptions.titleSize || fontSize;
+      const bodySize = TNSFancyAlert.textDisplayOptions.bodySize || fontSize;
+      const buttonSize =
+        TNSFancyAlert.textDisplayOptions.buttonSize || fontSize;
+
+      // if one font is specified on any option just use that for all
+      if (TNSFancyAlert.textDisplayOptions.applyFontToAll) {
+        if (TNSFancyAlert.textDisplayOptions.titleFont) {
+          fontFamily = TNSFancyAlert.textDisplayOptions.titleFont;
+        } else if (TNSFancyAlert.textDisplayOptions.bodyFont) {
+          fontFamily = TNSFancyAlert.textDisplayOptions.bodyFont;
+        } else if (TNSFancyAlert.textDisplayOptions.buttonFont) {
+          fontFamily = TNSFancyAlert.textDisplayOptions.buttonFont;
+        }
+      }
+
+      alert.setTitleFontFamilyWithSize(fontFamily, titleSize);
+      alert.setBodyTextFontFamilyWithSize(fontFamily, bodySize);
+      alert.setButtonsTextFontFamilyWithSize(fontFamily, buttonSize);
+    }
+  }
+
   public static showCustomTextAttributes(
     attributionBlock: (p1: string) => NSAttributedString,
     button: TNSFancyAlertButton,
@@ -410,6 +423,8 @@ export class TNSFancyAlert {
   ) {
     return new Promise((resolve, reject) => {
       let alert = TNSFancyAlert.createAlert(width);
+      TNSFancyAlert.applyTextDisplayOptions(alert);
+
       alert.attributedFormatBlock = attributionBlock;
       alert.addButtonActionBlock(button.label, () => {
         button.action();
@@ -441,6 +456,8 @@ export class TNSFancyAlert {
   ) {
     return new Promise((resolve, reject) => {
       let alert = TNSFancyAlert.createAlert(width);
+      TNSFancyAlert.applyTextDisplayOptions(alert);
+
       var textField = alert.addTextField(placeholder);
       if (initialValue) textField.text = initialValue;
       alert.addButtonActionBlock(button.label, () => {
@@ -474,6 +491,8 @@ export class TNSFancyAlert {
   ) {
     return new Promise((resolve, reject) => {
       let alert = TNSFancyAlert.createAlert(width);
+      TNSFancyAlert.applyTextDisplayOptions(alert);
+
       var switchView = alert.addSwitchViewWithLabel(switchLabel);
       switchView.tintColor = new Color(switchColor).ios;
 
@@ -505,6 +524,8 @@ export class TNSFancyAlert {
   ) {
     return new Promise((resolve, reject) => {
       let alert = TNSFancyAlert.createAlert(width);
+      TNSFancyAlert.applyTextDisplayOptions(alert);
+
       alert.addCustomView(customView);
       TNSFancyAlert.showCustom(
         alert,
@@ -534,6 +555,7 @@ export class TNSFancyAlert {
     buttons?: Array<TNSFancyAlertButton>
   ) {
     let alert = TNSFancyAlert.createAlert(width);
+    TNSFancyAlert.applyTextDisplayOptions(alert);
 
     // add custom buttons
     if (buttons) {
