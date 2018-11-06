@@ -1,6 +1,6 @@
 import { TNSFancyAlertButton } from "./common";
 export * from "./common";
-export interface SUPPORTED_TYPESI {
+export interface IFancyAlertSupportedTypes {
   SUCCESS: string;
   ERROR: string;
   NOTICE: string;
@@ -10,7 +10,7 @@ export interface SUPPORTED_TYPESI {
   WAITING: string;
   QUESTION: string;
 }
-export interface HIDE_ANIMATION_TYPESI {
+export interface IFancyAlertHideAnimationTypes {
   FadeOut: any;
   SlideOutToBottom: any;
   SlideOutToTop: any;
@@ -19,7 +19,7 @@ export interface HIDE_ANIMATION_TYPESI {
   SlideOutToCenter: any;
   SlideOutFromCenter: any;
 }
-export interface SHOW_ANIMATION_TYPESI {
+export interface IFancyAlertShowAnimationTypes {
   FadeIn: any;
   SlideInFromBottom: any;
   SlideInFromTop: any;
@@ -28,25 +28,38 @@ export interface SHOW_ANIMATION_TYPESI {
   SlideInFromCenter: any;
   SlideInToCenter: any;
 }
-export interface BACKGROUND_TYPESI {
+export interface IFancyAlertBackgroundTypes {
   Shadow: any;
   Blur: any;
   Transparent: any;
 }
+export interface IFancyAlertTextOptions {
+  titleFont?: string;
+  titleSize?: number;
+  bodyFont?: string;
+  bodySize?: number;
+  buttonFont?: string;
+  buttonSize?: number;
+  // if font is set on any option just use that font for all text settings
+  applyFontToAll?: boolean;
+}
 export declare class TNSFancyAlertButton {
   label: string;
   action: (arg?: any) => void;
+  // this will give you the SLCButton (child of UIButton) instance that you can style however you'd like
+  applyStyle: (btn: any) => void;
   constructor(model?: any) {}
 }
 export declare class TNSFancyAlert {
-  static SUPPORTED_TYPES: SUPPORTED_TYPESI;
+  static SUPPORTED_TYPES: IFancyAlertSupportedTypes;
   static shouldDismissOnTapOutside: boolean;
-  static hideAnimationType: HIDE_ANIMATION_TYPESI;
-  static HIDE_ANIMATION_TYPES: HIDE_ANIMATION_TYPESI;
-  static showAnimationType: SHOW_ANIMATION_TYPESI;
-  static SHOW_ANIMATION_TYPES: SHOW_ANIMATION_TYPESI;
-  static backgroundType: BACKGROUND_TYPESI;
-  static BACKGROUND_TYPES: BACKGROUND_TYPESI;
+  static hideAnimationType: IFancyAlertHideAnimationTypes;
+  static HIDE_ANIMATION_TYPES: IFancyAlertHideAnimationTypes;
+  static showAnimationType: IFancyAlertShowAnimationTypes;
+  static SHOW_ANIMATION_TYPES: IFancyAlertShowAnimationTypes;
+  static backgroundType: IFancyAlertBackgroundTypes;
+  static BACKGROUND_TYPES: IFancyAlertBackgroundTypes;
+  static textDisplayOptions: IFancyAlertTextOptions;
   static customViewColor: string;
   static iconTintColor: string;
   static titleColor: string;
@@ -214,4 +227,15 @@ export declare class TNSFancyAlert {
   ): void;
   static applyOptions(alert: any): void;
   static createAlert(width?: number): any;
+  // Android only
+  static showColorDialog(
+    title: string,
+    subTitle: string,
+    okBtnTitle?: string,
+    cancelBtnTitle?: string,
+    backgroundColor?: string,
+    titleTextColor?: string,
+    contextTextColor?: string,
+    contentImage?: any
+  ): Promise<any>;
 }

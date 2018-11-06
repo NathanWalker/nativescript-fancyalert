@@ -161,11 +161,11 @@ TNSFancyAlert.showSwitch(
 
 | Property                                                 | Description                                                                                                                                                                  |
 | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `TNSFancyAlert.SUPPORTED_TYPES: SUPPORTED_TYPESI`        | Different supported style types.                                                                                                                                             |
+| `TNSFancyAlert.SUPPORTED_TYPES: IFancyAlertSupportedTypes`        | Different supported style types.                                                                                                                                             |
 | `TNSFancyAlert.shouldDismissOnTapOutside: boolean`       | Should dismiss when tapped outside.                                                                                                                                          |
-| `TNSFancyAlert.hideAnimationType: HIDE_ANIMATION_TYPESI` | Use `TNSFancyAlert.HIDE_ANIMATION_TYPES` to set. Supports: FadeOut, SlideOutToBottom, SlideOutToTop, SlideOutToLeft, SlideOutToRight, SlideOutToCenter, SlideOutFromCenter.  |
-| `TNSFancyAlert.showAnimationType: SHOW_ANIMATION_TYPESI` | Use `TNSFancyAlert.SHOW_ANIMATION_TYPES` to set. Supports: FadeIn, SlideInFromBottom, SlideInFromTop, SlideInFromLeft, SlideInFromRight, SlideInFromCenter, SlideInToCenter. |
-| `TNSFancyAlert.backgroundType: BACKGROUND_TYPESI`        | Use `TNSFancyAlert.BACKGROUND_TYPES` to set. Supports: Shadow, Blur, Transparent.                                                                                            |
+| `TNSFancyAlert.hideAnimationType: IFancyAlertHideAnimationTypes` | Use `TNSFancyAlert.HIDE_ANIMATION_TYPES` to set. Supports: FadeOut, SlideOutToBottom, SlideOutToTop, SlideOutToLeft, SlideOutToRight, SlideOutToCenter, SlideOutFromCenter.  |
+| `TNSFancyAlert.showAnimationType: IFancyAlertShowAnimationTypes` | Use `TNSFancyAlert.SHOW_ANIMATION_TYPES` to set. Supports: FadeIn, SlideInFromBottom, SlideInFromTop, SlideInFromLeft, SlideInFromRight, SlideInFromCenter, SlideInToCenter. |
+| `TNSFancyAlert.backgroundType: IFancyAlertBackgroundTypes`        | Use `TNSFancyAlert.BACKGROUND_TYPES` to set. Supports: Shadow, Blur, Transparent.                                                                                            |
 | `TNSFancyAlert.customViewColor: string`                  | Overwrite (Buttons, top circle and borders) colors.                                                                                                                          |
 | `TNSFancyAlert.iconTintColor: string`                    | Set custom tint color for icon image.                                                                                                                                        |
 | `TNSFancyAlert.titleColor: string`                       | Set custom title color.                                                                                                                                                      |
@@ -175,6 +175,7 @@ TNSFancyAlert.showSwitch(
 | `TNSFancyAlert.backgroundViewColor: string`              | Overwrite background color                                                                                                                                                   |
 | `TNSFancyAlert.useLargerIcon: boolean`                   | Make the top circle icon larger                                                                                                                                              |
 | `TNSFancyAlert.soundURL: string`                         | Use mp3 from App_Resources when alert shows.                                                                                                                                 |
+| `TNSFancyAlert.textDisplayOptions: IFancyAlertTextOptions`               | IOS Only. Text display options                                                                                                                                                         |
 
 #### TNSFancyAlert - Methods
 
@@ -230,6 +231,19 @@ TNSFancyAlert.showError("Error!", "Something bad happened.", "Close").then(
 - `showNotice(title: string, subTitle?: string, closeBtnTitle?: string): Promise<any>`
 - `showWarning(title: string, subTitle?: string, closeBtnTitle?: string): Promise<any>`
 - `showInfo(title: string, subTitle?: string, closeBtnTitle?: string): Promise<any>`
+- ```
+  showColorDialog(
+    title: string,
+    subTitle?: string,
+    okBtnTitle?: string,
+    cancelBtnTitle?: string,
+    backgroundColor?: string,
+    titleTextColor?: string,
+    contextTextColor?: string,
+    contentImage?: any
+  ): Promise<any>```
+
+
 
 ## Why the TNS prefixed name?
 
