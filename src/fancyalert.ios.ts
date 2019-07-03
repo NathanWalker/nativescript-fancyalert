@@ -24,6 +24,7 @@ export class TNSFancyAlert {
 
   //Dismiss on tap outside (Default is NO)
   public static shouldDismissOnTapOutside: boolean = false;
+  public static dismissCallback: () => void;
 
   // font handling
   public static textDisplayOptions: IFancyAlertTextOptions;
@@ -657,10 +658,15 @@ export class TNSFancyAlert {
    * Alert Creator
    **/
   public static createAlert(width?: number) {
+    let alert: SCLAlertView;
     if (width) {
-      return SCLAlertView.alloc().initWithNewWindowWidth(width);
+      alert = SCLAlertView.alloc().initWithNewWindowWidth(width);
     } else {
-      return SCLAlertView.alloc().initWithNewWindow();
+      alert = SCLAlertView.alloc().initWithNewWindow();
     }
+    if (TNSFancyAlert.dismissCallback) {
+      alert.alertIsDismissed(TNSFancyAlert.dismissCallback);
+    }
+    return alert;
   }
 }

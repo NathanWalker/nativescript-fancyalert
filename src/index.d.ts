@@ -53,6 +53,7 @@ export declare class TNSFancyAlertButton {
 export declare class TNSFancyAlert {
   static SUPPORTED_TYPES: IFancyAlertSupportedTypes;
   static shouldDismissOnTapOutside: boolean;
+  static dismissCallback: () => void;
   static hideAnimationType: IFancyAlertHideAnimationTypes;
   static HIDE_ANIMATION_TYPES: IFancyAlertHideAnimationTypes;
   static showAnimationType: IFancyAlertShowAnimationTypes;
