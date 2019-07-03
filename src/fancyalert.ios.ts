@@ -310,8 +310,8 @@ export class TNSFancyAlert {
         duration || 5
       );
       // TODO: find way to resolve only after button is tapped
-      // right now just resolve after its shown
-      resolve();
+      // right now just resolve after its shown passing back instance to allow further control by developer
+      resolve(alert);
     });
   }
 
@@ -338,8 +338,8 @@ export class TNSFancyAlert {
         duration || 0
       );
       // TODO: find way to resolve only after button is tapped
-      // right now just resolve after its shown
-      resolve();
+      // right now just resolve after its shown passing back instance to allow further control by developer
+      resolve(alert);
     });
   }
 
@@ -375,8 +375,8 @@ export class TNSFancyAlert {
         duration
       );
       // TODO: find way to resolve only after button is tapped
-      // right now just resolve after its shown
-      resolve();
+      // right now just resolve after its shown passing back instance to allow further control by developer
+      resolve(alert);
     });
   }
 
@@ -538,8 +538,8 @@ export class TNSFancyAlert {
         duration
       );
       // TODO: find way to resolve only after button is tapped
-      // right now just resolve after its shown
-      resolve();
+      // right now just resolve after its shown passing back instance to allow further control by developer
+      resolve(alert);
     });
   }
 

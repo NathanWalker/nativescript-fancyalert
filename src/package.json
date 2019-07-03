@@ -1,6 +1,6 @@
 {
   "name": "nativescript-fancyalert",
-  "version": "3.0.7",
+  "version": "3.0.8",
   "description": "Fancy alerts for NativeScript.",
   "main": "fancyalert",
   "typings": "index.d.ts",
