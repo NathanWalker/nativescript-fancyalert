@@ -23,7 +23,7 @@ export class TNSFancyAlert {
   ): Promise<any> {
     return new Promise((resolve, reject) => {
       const alert = new cn.refactor.lib.colordialog.PromptDialog(
-        app.android.currentContext
+        app.android.foregroundActivity
       );
       alert.setCanceledOnTouchOutside(TNSFancyAlert.shouldDismissOnTapOutside);
       alert.setDialogType(IFancyAlertSupportedTypesAndroid.SUCCESS);
@@ -50,7 +50,7 @@ export class TNSFancyAlert {
   ): Promise<any> {
     return new Promise((resolve, reject) => {
       const alert = new cn.refactor.lib.colordialog.PromptDialog(
-        app.android.currentContext
+        app.android.foregroundActivity
       );
       alert.setCanceledOnTouchOutside(TNSFancyAlert.shouldDismissOnTapOutside);
       alert.setDialogType(IFancyAlertSupportedTypesAndroid.WRONG);
@@ -77,7 +77,7 @@ export class TNSFancyAlert {
   ): Promise<any> {
     return new Promise((resolve, reject) => {
       const alert = new cn.refactor.lib.colordialog.PromptDialog(
-        app.android.currentContext
+        app.android.foregroundActivity
       );
       alert.setCanceledOnTouchOutside(TNSFancyAlert.shouldDismissOnTapOutside);
       alert.setDialogType(IFancyAlertSupportedTypesAndroid.HELP);
@@ -104,7 +104,7 @@ export class TNSFancyAlert {
   ): Promise<any> {
     return new Promise((resolve, reject) => {
       const alert = new cn.refactor.lib.colordialog.PromptDialog(
-        app.android.currentContext
+        app.android.foregroundActivity
       );
       alert.setCanceledOnTouchOutside(TNSFancyAlert.shouldDismissOnTapOutside);
       alert.setDialogType(IFancyAlertSupportedTypesAndroid.WARNING);
@@ -131,7 +131,7 @@ export class TNSFancyAlert {
   ): Promise<any> {
     return new Promise((resolve, reject) => {
       const alert = new cn.refactor.lib.colordialog.PromptDialog(
-        app.android.currentContext
+        app.android.foregroundActivity
       );
       alert.setCanceledOnTouchOutside(TNSFancyAlert.shouldDismissOnTapOutside);
       alert.setDialogType(IFancyAlertSupportedTypesAndroid.INFO); /// Info
@@ -163,7 +163,7 @@ export class TNSFancyAlert {
   ): Promise<any> {
     return new Promise((resolve, reject) => {
       const alert = new cn.refactor.lib.colordialog.ColorDialog(
-        app.android.currentContext
+        app.android.foregroundActivity
       );
       // alert.setCanceledOnTouchOutside(TNSFancyAlert.shouldDismissOnTapOutside);
       // alert.setDialogType(IFancyAlertSupportedTypesAndroid.HELP);
