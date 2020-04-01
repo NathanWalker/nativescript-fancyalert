@@ -10,7 +10,8 @@ export enum IFancyAlertSupportedTypesAndroid {
   HELP = 1,
   WRONG = 2,
   SUCCESS = 3,
-  WARNING = 4
+  WARNING = 4,
+  EDIT = 5
 }
 
 export class TNSFancyAlert {
@@ -117,6 +118,34 @@ export class TNSFancyAlert {
           onClick: dialog => {
             dialog.dismiss();
             resolve();
+          }
+        })
+      );
+      alert.show();
+    });
+  }
+
+  public static showEdit(
+    title: string,
+    subTitle?: string,
+    closeBtnTitle?: string
+  ): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const alert = new cn.refactor.lib.colordialog.PromptDialog(
+        app.android.foregroundActivity
+      );
+      alert.setCanceledOnTouchOutside(TNSFancyAlert.shouldDismissOnTapOutside);
+      alert.setDialogType(IFancyAlertSupportedTypesAndroid.EDIT); /// EDIT
+      alert.setTitleText(title || "Edit");
+      alert.setContentText(subTitle || "");
+      alert.setEditTextHint(subTitle || "");
+      alert.setAnimationEnable(true);
+      alert.setPositiveListener(
+        closeBtnTitle || "Ok",
+        new cn.refactor.lib.colordialog.PromptDialog.OnPositiveListener({
+          onClick: dialog => {
+            dialog.dismiss();
+            resolve(dialog.getEditText().getText());
           }
         })
       );
