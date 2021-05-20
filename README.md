@@ -1,3 +1,10 @@
+## NativeScript 7 or higher
+
+* Use `@nstudio/nativescript-fancyalert`: `~4.0.0`
+* [Source managed here](https://github.com/nstudio/nativescript-plugins)
+
+## If using 6 and below, see the following:
+
 Fancy alerts for NativeScript.
 
 Based on:
