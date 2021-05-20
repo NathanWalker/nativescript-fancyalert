@@ -123,7 +123,7 @@ export class HelloWorldModel extends Observable {
     TNSFancyAlert.showCustomImage(
       "nativescript.png",
       "#2B33FF",
-      "Custom Image",
+      "@drawable/customimage",     //Place image name without extension
       `Using your own images is sure nice.`,
       "Yes!"
     );

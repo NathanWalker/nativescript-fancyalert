@@ -208,7 +208,8 @@ export class TNSFancyAlert {
         alert.setContentTextColor(new Color(contextTextColor).android);
       }
       if (contentImage) {
-        alert.setContentImage(contentImage);
+        var context = app.android.context;
+        alert.setContentImage(context.getResources().getIdentifier(contentImage,null, context.getPackageName()));
       }
       alert.setAnimationEnable(true);
       alert.setPositiveListener(
